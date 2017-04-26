@@ -1,18 +1,15 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
-import { Pontos } from '../../../api/pontos.js';
+import { Pontos } from 'imports/api/pontos/pontos.js';
 
-import '../../components/ponto/ponto.js';
-//import './body.html';
-import '../home/index.html'
-import '../../components/navbar/navbar.html';
-import '../../users.js';
+
+
 
 Template.body.onCreated(function bodyOnCreated() {
   // this.state = new ReactiveDict();
   Meteor.subscribe('pontos');
   Meteor.subscribe('userData');
-  Meteor.call('firstAdmin');
+
 });
 
 Template.body.helpers({
