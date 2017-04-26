@@ -23,8 +23,10 @@ accounts-password
 kadira:blaze-layout     # Layout manager for blaze (works well with FlowRouter)
 less@2.7.9                    # Leaner CSS language
 
+kevohagan:sweetalert
 
 practicalmeteor:mocha             # A package for writing and running your meteor app and package tests with mocha
 johanbrook:publication-collector  # Test a Meteor publication by collecting its output
 
+meteorhacks:aggregate
 iron:router

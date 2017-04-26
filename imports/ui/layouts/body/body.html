@@ -1,7 +1,17 @@
 <template name="App_body">
   <h1> CarChange Site Teste</h1>
+  {{> navigation}}
   {{> loginButtons}}
   {{> yield}}
   <hr />
   <p>Copyright &copy; CarChange, 3000.</p>
+</template>
+
+<template name="navigation">
+    <ul>
+        <li><a href="{{pathFor route='home'}}">Home</a></li>
+        <li><a href="{{pathFor route='register'}}">Register</a></li>
+        <li><a href="{{pathFor route='login'}}">Login</a></li>
+        <li><a href="{{pathFor route='pontoVirtual'}}">Ponto Virtual</a></li>
+    </ul>
 </template>

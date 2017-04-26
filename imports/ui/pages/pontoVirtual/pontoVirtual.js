@@ -2,18 +2,16 @@ import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 import { Pontos } from '/imports/api/pontos/pontos.js';
 
-import './ponto.html';
-
+import './pontoVirtual.html';
+import '/imports/ui/components/ponto/ponto.js';
 
 
 Template.body.onCreated(function bodyOnCreated() {
   // this.state = new ReactiveDict();
-  Meteor.subscribe('pontos');
-  Meteor.subscribe('userData');
 
 });
 
-Template.body.helpers({
+Template.pontoVirtual.helpers({
   pontos() {
       return Pontos.find({}, { sort: {username: -1 } });
   },
@@ -22,7 +20,7 @@ Template.body.helpers({
   },
 });
 
-Template.body.events({
+Template.pontoVirtual.events({
    'submit .new-ponto'(event) {
        event.preventDefault();
        var count = Pontos.find({checked: true, username: Meteor.user().username }).count();
