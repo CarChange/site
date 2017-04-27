@@ -1,3 +1,5 @@
+//Eh importado por register-api.js APENAS. Uma vez no server, todos tem acesso aos metodos.
+
 import { Meteor } from 'meteor/meteor';
 import { Pontos } from './pontos.js';
 import { check } from 'meteor/check';
