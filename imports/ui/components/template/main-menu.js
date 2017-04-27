@@ -1,4 +1,4 @@
-var mainMenu = (function() {
+export const mainMenu = (function() {
 
 	var $listItems = $( '#mainmenu > ul > li.has-submenu' ),
 		$menuItems = $listItems.children( 'a' ),
