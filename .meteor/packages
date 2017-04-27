@@ -35,3 +35,6 @@ twbs:bootstrap
 ian:accounts-ui-bootstrap-3
 fourseven:scss
 fortawesome:fontawesome
+
+alanning:roles
+jquery
