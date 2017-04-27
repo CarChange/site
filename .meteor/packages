@@ -32,6 +32,5 @@ meteorhacks:aggregate
 iron:router
 
 twbs:bootstrap
-ian:accounts-ui-bootstrap-3
 fourseven:scss
 fortawesome:fontawesome
