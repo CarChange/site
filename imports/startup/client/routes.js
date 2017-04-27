@@ -10,7 +10,7 @@ import '/imports/ui/pages/loading/loading.js';
 //import '/imports/ui/pages/loja/loja.js';
 import '/imports/ui/pages/not-found/not-found.js';
 import '/imports/ui/pages/pontoVirtual/pontoVirtual.js';
-import '/imports/ui/pages/register/register.js';
+import '/imports/ui/pages/registrar/registrar.js';
 
 // Set up fixed Layout
 Router.configure({
@@ -25,9 +25,9 @@ Router.route("/", {
 
 });
 
-Router.route("/register", {
-  name:"register",
-  template:"register",
+Router.route("/registrar", {
+  name:"registrar",
+  template:"registrar",
 });
 
 Router.route("/pontoVirtual", {
