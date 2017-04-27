@@ -34,3 +34,6 @@ iron:router
 twbs:bootstrap
 fourseven:scss
 fortawesome:fontawesome
+
+alanning:roles
+jquery
