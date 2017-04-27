@@ -6,8 +6,8 @@ import './leaflet.ie.css';
 import './lesshat.less';
 
 import './coming-soon-social.css';
-import './general.less';
 import './variables.less';
+import './general.less';
 import './components.css';
 import './main.less';
 import './main.css';
