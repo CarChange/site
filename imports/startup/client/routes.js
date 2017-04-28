@@ -11,8 +11,9 @@ import '/imports/ui/pages/loja/loja.js';
 import '/imports/ui/pages/not-found/not-found.js';
 import '/imports/ui/pages/pontoVirtual/pontoVirtual.js';
 import '/imports/ui/pages/registrar/registrar.js';
+import '/imports/ui/pages/sobre/sobre.js';
 import '/imports/ui/pages/vantagens/vantagens.js';
-
+import '/imports/ui/pages/planos/planos.js';
 // Set up fixed Layout
 Router.configure({
   layoutTemplate: 'App_body',
