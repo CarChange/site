@@ -37,6 +37,8 @@ Router.route("/login");
 
 Router.route("/vantagens");
 
+Router.route("/planos");
+
 Router.route("/pontoVirtual", {
   waitOn:function(){
     return Meteor.subscribe('pontos');

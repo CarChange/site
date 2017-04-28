@@ -4,20 +4,15 @@ import { Pontos } from '/imports/api/pontos/pontos.js';
 
 import './pontoVirtual.html';
 import '/imports/ui/components/ponto/ponto.js';
+import '/imports/ui/components/ponto/pontoAdmin.js';
 
 
-Template.body.onCreated(function bodyOnCreated() {
-  // this.state = new ReactiveDict();
-
-});
 
 Template.pontoVirtual.helpers({
   pontos() {
       return Pontos.find({}, { sort: {username: -1 } });
   },
-  checkAdmin() {
-      return Meteor.user().isAdmin;
-  },
+
 });
 
 Template.pontoVirtual.events({
