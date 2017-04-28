@@ -1,1 +1,1 @@
-import './loja.js';
+import './loja.html';
