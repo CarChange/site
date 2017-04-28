@@ -23,8 +23,8 @@ Meteor.startup(() => {
         };
         Accounts.createUser(user);
         user = Accounts.findUserByUsername("username");
- 
-        Roles.addUsersToRoles(admin._id, 'um-role-que-nao-existe', Roles.GLOBAL_GROUP);
+
+        Roles.addUsersToRoles(user._id, 'um-role-que-nao-existe', Roles.GLOBAL_GROUP);
 
         console.log(Meteor.users.find().count() + " eh o admin e o user");
     }
