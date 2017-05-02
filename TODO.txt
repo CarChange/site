@@ -1,0 +1,8 @@
+TODO:
+    * Fazer registrar funcional para cliente;
+    * Fazer registrar funcional para vendedor;
+    * Fazer registrar funcional para parceiro;
+    * Fazer login funcional para cliente;
+    * Fazer login funcional para vendedor;
+    * Fazer login funcional para parceiro;
+    * Fazer vendas funcional;
