@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
-import { Users } from '/imports/api/users/users.js';
 
 import './registrar.html';
 
@@ -24,12 +23,16 @@ Template.registrar.events({
        //Call pro servidor
        Meteor.call("users.insert", user, function(error, result){
          if(error){
+           //para erros indefinidos
            console.log("erro disso aqui: ", error);
          }
          if(result){
-            console.log("deu certo olha: ", result);
+            //se conseguir criar
             swal("Sucesso!", "Registro realizado!");
+            Meteor.loginWithPassword(user.email, user.password);
+            Router.go('/');
          }else{
+            //se email repetido
             swal("Erro", "Email já registrado!", "error");
          }
        });
