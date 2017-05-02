@@ -5,20 +5,10 @@ import { Users } from '/imports/api/users/users.js';
 import './registrar.html';
 
 
-Template.registrar.helpers({
-  create: function(){
 
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
-});
 
 Template.registrar.events({
-  "click .form-registrar": function(event, template){
+  "submit .form-registrar": function(event){
      event.preventDefault();
 
      //valida confirma senha
@@ -28,11 +18,11 @@ Template.registrar.events({
        const user = {
          email: event.target.email.value,
          senha: event.target.senha.value,
-         profile: {nome:{primero: event.target.nome.value, ultimo: event.target.sobrenome.value }},
+         profile: {nome:{primeiro: event.target.nome.value, ultimo: event.target.sobrenome.value }},
        }
 
        //Call pro servidor
-       Meteor.call("meteorMethod", user, function(error, result){
+       Meteor.call("users.insert", user, function(error, result){
          if(error){
            console.log("erro disso aqui: ", error);
          }
@@ -41,8 +31,11 @@ Template.registrar.events({
          }
        });
      }else{
-       swal("Erro", "Senhas diferentes, favor redigitar!", "error");
+       swal("Erro", "Conforme a sua senha!", "error");
      }
+  },
+  "click .logout": function(event){
+
   }
 
 });
