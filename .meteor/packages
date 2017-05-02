@@ -16,24 +16,19 @@ standard-minifier-js@2.0.0    # JS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.7.2              # Enable ECMAScript2015+ syntax in app code
 
-accounts-ui
-accounts-password
-
-#kadira:flow-router      # FlowRouter is a very simple router for Meteor
-kadira:blaze-layout     # Layout manager for blaze (works well with FlowRouter)
-less@2.7.9                    # Leaner CSS language
-
-kevohagan:sweetalert
-
 practicalmeteor:mocha             # A package for writing and running your meteor app and package tests with mocha
 johanbrook:publication-collector  # Test a Meteor publication by collecting its output
+less@2.7.9                    # Leaner CSS language
 
+accounts-ui
+accounts-password
+kevohagan:sweetalert
 meteorhacks:aggregate
 iron:router
 
 twbs:bootstrap
 fourseven:scss
 fortawesome:fontawesome
-
 alanning:roles
 jquery
+matb33:collection-hooks
