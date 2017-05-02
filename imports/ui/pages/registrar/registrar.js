@@ -17,7 +17,7 @@ Template.registrar.events({
        //constrói objeto para enviar para servidor(call)
        const user = {
          email: event.target.email.value,
-         senha: event.target.senha.value,
+         password: event.target.senha.value,
          profile: {nome:{primeiro: event.target.nome.value, ultimo: event.target.sobrenome.value }},
        }
 
@@ -28,11 +28,16 @@ Template.registrar.events({
          }
          if(result){
             console.log("deu certo olha: ", result);
+            swal("Sucesso!", "Registro realizado!");
+         }else{
+            swal("Erro", "Email já registrado!", "error");
          }
        });
      }else{
        swal("Erro", "Conforme a sua senha!", "error");
      }
+
+
   },
   "click .logout": function(event){
 

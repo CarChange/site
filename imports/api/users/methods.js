@@ -7,15 +7,18 @@ Meteor.methods({
   'users.insert'(user) {
     check(user, {
       email: String,
-      senha: String,
+      password: String,
       profile: { nome: { primeiro: String, ultimo: String } },
     });
 
-      const userExists = Accounts.findUserByEmail(user.email);
+    const userExists = Accounts.findUserByEmail(user.email);
 
-      if (!userExists) {
-        const userId = Accounts.createUser({ email, senha, profile });
-        Roles.addUsersToRoles(userId, 'user');
-      }
+    if (!userExists) {
+      const userId = Accounts.createUser(user);
+      Roles.addUsersToRoles(userId, 'user');
+      return true;
+    }else{
+      return false;
+    }
   },
 });
