@@ -1,10 +1,49 @@
 <template name="registrar">
   <h1> REGISTRA AEeeeeeeeeeeeeeeeeee</h1>
   <h2>Registrar</h2>
-    <form class="register">
-        <p>Email: <input type="email" name="email"></p>
-        <p>Password: <input type="password" name="password"></p>
-        <p><input type="submit" value="Register"></p>
-    </form>
+
+  <div class="section">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                  <div class="basic-login">
+                      <form role="form" class="form-registrar">
+                          <div class="form-group">
+                              <label for="register-nome"><i class="icon-user"></i> <b>Primeiro nome</b></label>
+                              <input name"nome" class="form-control" id="registrar-username" type="text" placeholder="">
+                          </div>
+                          <div class="form-group">
+                              <label for="register-sobrenome"><i class="icon-user"></i> <b>Último nome</b></label>
+                              <input name"sobrenome" class="form-control" id="registrar-username" type="text" placeholder="">
+                          </div>
+                          <div class="form-group">
+                              <label for="register-username"><i class="icon-user"></i> <b>Email</b></label>
+                              <input name"email" class="form-control" id="registrar-username" type="email" placeholder="">
+                          </div>
+                          <div class="form-group">
+                              <label for="register-password"><i class="icon-lock"></i> <b>Senha</b></label>
+                              <input name"senha" class="form-control" id="registrar-password" type="password" placeholder="">
+                          </div>
+                          <div class="form-group">
+                              <label for="register-password2"><i class="icon-lock"></i> <b>Conformar a senha</b></label>
+                              <input name"senha2" class="form-control" id="registrar-password2" type="password" placeholder="">
+                          </div>
+                          <div class="form-group">
+                              <button type="submit" class="btn pull-right">Registrar</button>
+                              <div class="clearfix"></div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+              <!-- <div class="col-sm-6 col-sm-offset-1 social-login">
+                  <p>You can use your Facebook or Twitter for registration</p>
+                  <div class="social-login-buttons">
+                      <a href="#" class="btn-facebook-login">Use Facebook</a>
+                      <a href="#" class="btn-twitter-login">Use Twitter</a>
+                  </div>
+              </div> -->
+          </div>
+      </div>
+  </div>
   <a href="{{pathFor route='home'}}">Voltae</a>
 </template>
