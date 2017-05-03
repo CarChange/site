@@ -9,6 +9,8 @@ import './registrar.html';
 Template.registrar.events({
   "submit .form-registrar": function(event){
      event.preventDefault();
+     //get the captcha data
+     var captchaData = grecaptcha.getResponse();
 
      //valida confirma senha
      if(event.target.senha.value === event.target.senha2.value){
@@ -21,23 +23,24 @@ Template.registrar.events({
        }
 
        //Call pro servidor
-       Meteor.call("users.insert", user, function(error, result){
+       Meteor.call("users.insert", user, captchaData , function(error, result){
+
+         //resetando captcha
+         grecaptcha.reset();
+
          if(error){
-           //para erros indefinidos
-           console.log("erro disso aqui: ", error);
+           //pega msg de erros do users.insert
+           swal(error.reason, error.details,'error');
          }
          if(result){
             //se conseguir criar
             swal("Sucesso!", "Registro realizado!");
             Meteor.loginWithPassword(user.email, user.password);
             Router.go('/');
-         }else{
-            //se email repetido
-            swal("Erro", "Email já registrado!", "error");
          }
-       });
+        });
      }else{
-       swal("Erro", "Conforme a sua senha!", "error");
+       swal("Erro", "Confirme a sua senha!", "error");
      }
 
 
