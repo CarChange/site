@@ -27,7 +27,7 @@ Template.login.events({
          swal("Deu ruim","Errrrrrrrrrrou email ou senha",'error');
        }else{
          swal("Sucesso","Você logou nessa joça");
-         Router.go('/');
+         Router.go('admhomeass');
        }
     });
   }
