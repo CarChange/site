@@ -1484,9 +1484,9 @@ span.color-red{
   text-align: center;
 	clear: both;
 	position: relative;
-
-	height: 10%;
-	margin-top: 0em;
+	width: 100%;
+	height: 30px;
+	bottom: 0;
 	h3{
 		color: #E4E4E4;
 		font-size: 1.3em;
@@ -2143,8 +2143,7 @@ span.color-red{
 }
 
 .mainmenu-wrapper{
-	background-color: #FFF;
-	border-bottom: 4px solid @theme-color;
+	background-color: #000000;
 	z-index: 4;
 }
 
@@ -2354,6 +2353,11 @@ span.color-red{
 	}
 }
 
+.menunormal {
+	position: relative;
+  top: 9px;
+}
+
 /*--------------------------------------------------------------------------
 +	Buttons Style
 --------------------------------------------------------------------------*/
@@ -2501,8 +2505,13 @@ padding: 18px 15px 0 15px;
   padding: 9px 10px 9px 10px !important;
 }*/
 
-.leadTopster {
+.fill {
+    min-height: 100%;
+		height: 100%;
+}
 
+.topContent{
+	top: 0;
 }
 
 /*
