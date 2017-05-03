@@ -30,7 +30,7 @@ Template.registrar.events({
             //se conseguir criar
             swal("Sucesso!", "Registro realizado!");
             Meteor.loginWithPassword(user.email, user.password);
-            Router.go('/');
+            Router.go('admhomeass');
          }else{
             //se email repetido
             swal("Erro", "Email já registrado!", "error");
