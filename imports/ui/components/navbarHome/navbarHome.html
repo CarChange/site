@@ -19,9 +19,11 @@
 							<a href="{{pathFor route='planos'}}">Planos</a>
   						</li>
               {{#if currentUser}}
-                <h1>Bem vindo, {{currentUser.profile.nome.primeiro}}!</h1>
                 <li class="navbar-right menuextras">
                     <a href="#" class="logout">Logout</a>
+                </li>
+                <li class="navbar-right menuextras maisBaixo">
+                    <p>Bem vindo, {{currentUser.profile.nome.primeiro}}!</p>
                 </li>
               {{else}}
                 <li class="navbar-right menuextras">

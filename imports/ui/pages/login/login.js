@@ -27,7 +27,7 @@ Template.login.events({
          swal("Erro","Email ou Senha incorretos!",'error');
        }else{
          swal("Sucesso","Você está logado!");
-         Router.go('/');
+         Router.go('/tempadm');
        }
     });
   }
