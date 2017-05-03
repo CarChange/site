@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 
 // Import needed templates
 import '/imports/ui/layouts/index/index.js';
+import '/imports/ui/layouts/index2/index2.js';
 //import '/imports/ui/pages/carrinho/carrinho.js';
 import '/imports/ui/pages/home/home.js';
 import '/imports/ui/pages/loading/loading.js';
@@ -27,17 +28,41 @@ Router.route("/", {
   template:"home",
 });
 
-Router.route("/sobre");
+Router.route("/sobre",
+  function () {
+    this.layout('App_body2');
+    this.render('sobre');
+});
 
-Router.route("/registrar");
+Router.route("/registrar",
+  function () {
+    this.layout('App_body2');
+    this.render('registrar');
+});
 
-Router.route("/loja");
+Router.route("/loja",
+  function () {
+    this.layout('App_body2');
+    this.render('loja');
+});
 
-Router.route("/login");
+Router.route("/login",
+  function () {
+    this.layout('App_body2');
+    this.render('login');
+});
 
-Router.route("/vantagens");
+Router.route("/vantagens",
+  function () {
+    this.layout('App_body2');
+    this.render('vantagens');
+});
 
-Router.route("/planos");
+Router.route("/planos",
+  function () {
+    this.layout('App_body2');
+    this.render('planos');
+});
 
 Router.route("/pontoVirtual", {
   waitOn:function(){
