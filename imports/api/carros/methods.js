@@ -13,9 +13,9 @@ Meteor.methods({
           marca : String,
           modelo : String,
           categoria : String,
-          valor : Float,
+          valor : String,//Mudar para Number
           creator: {
-            createdAt : String,
+            createdAt : Date,
             adminId : String,
           }
         });
