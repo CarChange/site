@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Users } from '../carros.js';
+import { Carros } from '../carros.js';
 
 //Isso é um gato - MEOW
 if(Meteor.isServer){

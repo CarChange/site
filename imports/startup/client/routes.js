@@ -86,10 +86,15 @@ function () {
     this.render('tempadmcons');
 });
 
-Router.route("/tempadmcadcons",
-function () {
-    this.layout('App_body2');
-    this.render('tempadmcadcons');
+Router.route("/tempadmcadcons",{
+  waitOn:function(){
+      return Meteor.subscribe('carros');
+  },
+  function () {
+      this.layout('App_body2');
+      this.render('tempadmcadcons');
+  }
+
 });
 
 Router.route("/pontoVirtual", {
