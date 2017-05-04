@@ -10,7 +10,13 @@ Meteor.startup(() => {
     }
     var admin = {
         email: "ad@min.com",
-        password: "gartinhos"
+        password: "gartinhos",
+        profile: {
+            nome: {
+                primeiro: "ad",
+                ultimo: "minho"
+            }
+        }
     };
     Accounts.createUser(admin);
     admin = Accounts.findUserByEmail("ad@min.com");
