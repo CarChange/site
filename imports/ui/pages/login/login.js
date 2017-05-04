@@ -24,9 +24,9 @@ Template.login.events({
 
     Meteor.loginWithPassword(email, senha, function(err){
        if(err){
-         swal("Deu ruim","Errrrrrrrrrrou email ou senha",'error');
+         swal("Erro","Email ou Senha incorretos!",'error');
        }else{
-         swal("Sucesso","Você logou nessa joça");
+         swal("Sucesso","Você está logado!");
          Router.go('/tempadm');
        }
     });
