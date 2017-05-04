@@ -14,7 +14,7 @@
                   <a href="{{pathFor route='tempadmcadcons'}}">Área do Adminho</a>
                 </li>
               {{/if}}
-              {{#if isInRole 'user'}}
+              {{#if isInRole 'user,admin'}}
                 <li class="navbar-left menunormal">
                     <a href="{{pathFor route='tempadm'}}">Área de Membros</a>
                 </li>
@@ -69,7 +69,7 @@
         <li><a href="{{pathFor route='tempadmcadcons'}}">Área do Adminho</a></li>
       </ul>
       {{/if}}
-      {{#if isInRole 'user'}}
+      {{#if isInRole 'user,admin'}}
       <ul class="nav navbar-nav">
         <li><a href="{{pathFor route='tempadm'}}">Área de Membros</a></li>
       </ul>
