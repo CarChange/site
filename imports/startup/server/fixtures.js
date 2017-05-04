@@ -21,7 +21,7 @@ Meteor.startup(() => {
     Accounts.createUser(admin);
     admin = Accounts.findUserByEmail("ad@min.com");
 
-    Roles.addUsersToRoles(admin._id, 'super-admin', Roles.GLOBAL_GROUP);
+    Roles.addUsersToRoles(admin._id, 'admin', Roles.GLOBAL_GROUP);
 
     if(admin) {
         console.log("Admin cadastrado.");
