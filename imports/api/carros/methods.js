@@ -34,13 +34,13 @@ Meteor.methods({
         throw new Meteor.Error('Não Autorizado');
 
         check(carro,{
-          _id : String,
+          _id: String,
           marca : String,
           modelo : String,
           categoria : String,
-          valor : Float,
+          valor : String,//Mudar para Number
           creator: {
-            createdAt : String,
+            createdAt : Date,
             adminId : String,
           }
         });
