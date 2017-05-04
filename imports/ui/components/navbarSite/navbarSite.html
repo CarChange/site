@@ -9,7 +9,12 @@
                   <img src="img/g12.png" alt="CarChange Clube Automotivo">
                 </a>
               </li>
-              {{#if currentUser}}
+              {{#if isInRole 'admin'}}
+                <li class="navbar-left menunormal">
+                  <a href="{{pathFor route='tempadmcadcons'}}">Área do Adminho</a>
+                </li>
+              {{/if}}
+              {{#if isInRole 'user'}}
                 <li class="navbar-left menunormal">
                     <a href="{{pathFor route='tempadm'}}">Área de Membros</a>
                 </li>
@@ -61,7 +66,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       {{#if isInRole 'admin'}}
       <ul class="nav navbar-nav">
-        <li><a href="{{pathFor route='tempadmcadcons'}}">Área de Membros</a></li>
+        <li><a href="{{pathFor route='tempadmcadcons'}}">Área do Adminho</a></li>
       </ul>
       {{/if}}
       {{#if isInRole 'user'}}
