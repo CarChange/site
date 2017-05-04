@@ -14,7 +14,7 @@ Meteor.methods({
           modelo : String,
           categoria : String,
           valor : Float,
-          creator{
+          creator: {
             createdAt : String,
             adminId : String,
           }
@@ -28,24 +28,24 @@ Meteor.methods({
         throw new Meteor.Error('Não Autorizado');
 
       Carros.remove(idCarro);
-  }
+  },
   'carros.update' (carro){
-    if(!Roles.userIsInRole(Meteor.userId(),'admin'))
-      throw new Meteor.Error('Não Autorizado');
+      if(!Roles.userIsInRole(Meteor.userId(),'admin'))
+        throw new Meteor.Error('Não Autorizado');
 
-      check(carro,{
-        _id : String,
-        marca : String,
-        modelo : String,
-        categoria : String,
-        valor : Float,
-        creator{
-          createdAt : String,
-          adminId : String,
-        }
-      });
+        check(carro,{
+          _id : String,
+          marca : String,
+          modelo : String,
+          categoria : String,
+          valor : Float,
+          creator: {
+            createdAt : String,
+            adminId : String,
+          }
+        });
 
-      Carros.update(carro._id,{$set: carro});
+        Carros.update(carro._id,{$set: carro});
 
   }
 });
