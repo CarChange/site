@@ -73,28 +73,29 @@ Router.route("/planos",
     this.render('planos');
 });
 
+//TODO mudar nome dos paths (e.g. /admhomeass -> /dashboard_socio)
 Router.route("/tempadm",
-  function () {
+function () {
     this.layout('App_body2');
     this.render('tempadm');
 });
 
 Router.route("/tempadmcons",
-  function () {
+function () {
     this.layout('App_body2');
     this.render('tempadmcons');
 });
 
 Router.route("/tempadmcadcons",
-  function () {
+function () {
     this.layout('App_body2');
     this.render('tempadmcadcons');
 });
 
 Router.route("/pontoVirtual", {
-  waitOn:function(){
-    return Meteor.subscribe('pontos');
-  },
+    waitOn:function(){
+        return Meteor.subscribe('pontos');
+    },
 });
 
 Router.route("/admhomeass",
