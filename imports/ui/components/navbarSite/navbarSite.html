@@ -59,7 +59,12 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      {{#if currentUser}}
+      {{#if isInRole 'admin'}}
+      <ul class="nav navbar-nav">
+        <li><a href="{{pathFor route='tempadmcadcons'}}">Área de Membros</a></li>
+      </ul>
+      {{/if}}
+      {{#if isInRole 'user'}}
       <ul class="nav navbar-nav">
         <li><a href="{{pathFor route='tempadm'}}">Área de Membros</a></li>
       </ul>

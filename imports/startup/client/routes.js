@@ -17,6 +17,8 @@ import '/imports/ui/pages/sobre/sobre.js';
 import '/imports/ui/pages/vantagens/vantagens.js';
 import '/imports/ui/pages/planos/planos.js';
 import '/imports/ui/pages/tempadm/tempadm.js';
+import '/imports/ui/pages/tempadmcons/tempadmcons.js'
+import '/imports/ui/pages/tempadmcadcons/tempadmcadcons.js'
 import '/imports/ui/pages/admconsass/admconsass.js';
 import '/imports/ui/pages/admhomeadm/admhomeadm.js';
 import '/imports/ui/pages/admhomeass/admhomeass.js';
@@ -75,6 +77,18 @@ Router.route("/tempadm",
   function () {
     this.layout('App_body2');
     this.render('tempadm');
+});
+
+Router.route("/tempadmcons",
+  function () {
+    this.layout('App_body2');
+    this.render('tempadmcons');
+});
+
+Router.route("/tempadmcadcons",
+  function () {
+    this.layout('App_body2');
+    this.render('tempadmcadcons');
 });
 
 Router.route("/pontoVirtual", {
