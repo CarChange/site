@@ -4,6 +4,7 @@ import './accounts-config.js';
 
 if(Meteor.isClient){
   Meteor.startup(function() {
+      //configuração reCAPTCHA cliente
       reCAPTCHA.config({
           publickey: '6Lf6-R8UAAAAAH7XBcGz2ZtAqts2_555PGo53z6B',
           hl: 'pt-BR' // optional display language
