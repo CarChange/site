@@ -20,9 +20,9 @@ Template.cadcarro.events({
 
         Meteor.call("carros.insert", novoCarro, (error, result) => {
             if(error) {
-                // swal(error.reason, error.details, 'error');
+                swal(error.reason, error.details, 'error');
             }
-            if (result) {
+            else {
                 swal("Foi!", "Carro cadastrado com sucesso.");
             }
         });

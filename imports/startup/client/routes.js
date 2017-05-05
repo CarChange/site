@@ -1,6 +1,6 @@
 import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
-
+import { Carros } from '/imports/api/carros/carros.js';
 // Import needed templates
 import '/imports/ui/layouts/index/index.js';
 import '/imports/ui/layouts/index2/index2.js';
@@ -80,23 +80,25 @@ function () {
     this.render('tempadm');
 });
 
-Router.route("/tempadmcons",
-function () {
-    this.layout('App_body2');
-    this.render('tempadmcons');
-});
-
-Router.route("/tempadmcadcons",{
+Router.route("/tempadmcons", {
   waitOn:function(){
-      return Meteor.subscribe('carros');
+    return Meteor.subscribe('carros');
   },
-  function () {
-      this.layout('App_body2');
-      this.render('tempadmcadcons');
-  }
-
+  onBeforeAction:function(){
+     this.layout('App_body2');
+     this.next();
+  },
 });
 
+Router.route("/tempadmcadcons", {
+  waitOn:function(){
+    return Meteor.subscribe('carros');
+  },
+  onBeforeAction:function(){
+     this.layout('App_body2');
+     this.next();
+  },
+});
 Router.route("/pontoVirtual", {
     waitOn:function(){
         return Meteor.subscribe('pontos');
@@ -125,4 +127,10 @@ Router.route("/admconsass",
   function () {
     this.layout('Adm_body');
     this.render('admconsass');
+});
+
+
+Router.route("/mostraCarro/:_id", function() {
+    var carro = Carros.findOne({_id : this.params._id});
+    this.render('mostraCarro',{data : carro});
 });
