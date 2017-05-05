@@ -78,9 +78,10 @@ Router.route("/planos",
 Router.route("/membros", {
 name:"membros",
 template:"membros",
-function () {
-    this.layout('App_body2');
-}
+onBeforeAction:function(){
+   this.layout('App_body2');
+   this.next();
+},
 });
 
 Router.route("/membros/consorcio", {
