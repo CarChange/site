@@ -2722,22 +2722,38 @@ section.download {
 }
 
 section.features {
+		position: relative;
+		width: 100%;
+		min-height: auto;
+		overflow-y: hidden;
+		background: url("../img/bg-pattern.png"), @theme-secondary; /* fallback for old browsers */
+		background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, @theme-tertiary , @theme-secondary); /* Chrome 10-25, Safari 5.1-6 */
+		background: url("../img/bg-pattern.png"), linear-gradient(to left, @theme-tertiary , @theme-secondary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		color: white;
+		.screen {
+
+		}
     .section-heading {
-        h2 {
+        h1 {
             margin-top: 0;
+						font-weight: lighter;
         }
         p {
             margin-bottom: 0;
+						font-size: 32px;
+						color: white;
+						line-height: 1em;
+						font-weight: lighter;
         }
         margin-bottom: 100px;
     }
     .device-container,
     .feature-item {
-        max-width: 300px;
+        max-width: 400px;
         margin: 0 auto;
     }
     .device-container {
-        margin-bottom: 100px;
+        margin-bottom: 0px;
         @media(min-width: 992px) {
             margin-bottom: 0;
         }
@@ -2760,8 +2776,13 @@ section.features {
         .device-container,
         .feature-item {
             max-width: none;
+						color: white;
         }
     }
+		.text-muted{
+			color: white;
+			font-weight: 100;
+		}
 }
 
 section.cta {
