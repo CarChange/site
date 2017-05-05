@@ -1,18 +1,18 @@
 <template name="pagamento">
     <form class="pagamento" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
         <!-- Campos obrigatórios -->
-        <!-- <input name="receiverEmail" type="hidden" value="consorcio.carchange@gmail.com">
-        <input name="currency" type="hidden" value="BRL"> -->
+        <input name="receiverEmail" type="hidden" value="consorcio.carchange@gmail.com">
+        <input name="currency" type="hidden" value="BRL">
 
         <!-- Itens do pagamento (ao menos um item é obrigatório) -->
-        <!-- <input name="itemId1" type="hidden" value="0001"> -->
-        <input name="itemDescription1" type="hidden" value="Notebook Prata">
-        <input name="itemAmount1" type="hidden" value="24300.00"> <!-- valor do item -->
+        <input name="itemId1" type="hidden" value="0001">
+        <input name="itemDescription1" type="hidden" value="{{produto.modelo}}">
+        <input name="itemAmount1" type="hidden" value="{{produto.valor}}"> <!-- valor do item -->
         <input name="itemQuantity1" type="hidden" value="1">
-        <input name="itemWeight1" type="hidden" value="1000">
+        <!-- <input name="itemWeight1" type="hidden" value="1000"> -->
 
         <!-- Código de referência do pagamento no seu sistema (opcional, IMPORTANTE) -->
-        <!-- <input name="reference" type="hidden" value="REF1234"> -->
+        <input name="reference" type="hidden" value="REF1234">
 
         <!-- Informações de frete (opcionais) -->
         <!-- <input name="shippingType" type="hidden" value="3">
@@ -26,10 +26,10 @@
         <input name="shippingAddressCountry" type="hidden" value="BRA"> -->
 
         <!-- Dados do comprador (opcionais) -->
-        <!-- <input name="senderName" type="hidden" value="{{userNome}}">
+        <input name="senderName" type="hidden" value="{{userNome}}">
         <input name="senderAreaCode" type="hidden" value="11">
         <input name="senderPhone" type="hidden" value="56273440">
-        <input name="senderEmail" type="hidden" value="{{userEmail}}"> -->
+        <input name="senderEmail" type="hidden" value="{{userEmail}}">
 
         <!-- submit do form (obrigatório) -->
         <input alt="Pague com PagSeguro" name="submit" class="pretoText" type="submit" value="Compre aqui!"/>

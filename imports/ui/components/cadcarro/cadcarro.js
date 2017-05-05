@@ -6,11 +6,12 @@ Template.cadcarro.events({
 
         var target = event.target;
 
+        // TODO Transformar carro em produto
         var novoCarro = {
             marca: target.marca.value,
             modelo: target.modelo.value,
             categoria: target.categoria.value,
-            valor: target.valor.value,
+            valor: parseFloat(target.valor.value).toFixed(2),
             creator: {
                 createdAt: new Date(),
                 adminId: Meteor.userId(),
