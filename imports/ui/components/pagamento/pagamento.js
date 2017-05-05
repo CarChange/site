@@ -60,5 +60,7 @@ Template.pagamento.events({
         // console.log(this);
 
         Meteor.call("pagamentos.insert", payment);
+
+        swal("PagSeguro", "Uma nova aba com os dados do pagamento foi aberta. Após a confirmação, entraremos em contato. Grato!");
     }
 });

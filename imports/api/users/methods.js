@@ -6,7 +6,7 @@ import { EJSON } from 'meteor/ejson';  // Meteor.call usa pra mais de um argumen
 Meteor.methods({
   'users.insert'(user, captchaData) {
 
-    var verifyCaptchaResponse = reCAPTCHA.verifyCaptcha('localhost', captchaData); //MUDAR localhost PARA this.connection.clientAddress QUANDO DER DEPLOY
+    var verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(this.connection.clientAddress, captchaData); //MUDAR localhost PARA this.connection.clientAddress QUANDO DER DEPLOY
 
     if (!verifyCaptchaResponse.success)
         throw new Meteor.Error(422, 'Erro no Captcha!', 'Favor resolver o Captcha!');

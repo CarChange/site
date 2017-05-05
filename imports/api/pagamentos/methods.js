@@ -5,8 +5,9 @@ import { check } from 'meteor/check';
 Meteor.methods({
     'pagamentos.insert': function(pagamento) {
 
-        if(Roles.userIsInRole(Meteor.userId(), 'user'))
-            throw new Meteor.error("Não Autorizado", "Precisa ser um usuário para realizar pagamentos. Verifique se está logado.");
+        // if(Roles.userIsInRole(Meteor.userId(), 'user'))
+        // if(Meteor.userId())
+        //     throw new Meteor.error("Não Autorizado", "Precisa ser um usuário para realizar pagamentos. Verifique se está logado.");
 
         check(pagamento, {
             refId: String,
