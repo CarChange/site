@@ -16,19 +16,35 @@ Template.pagamento.helpers({
         return nome.primeiro + " " + nome.ultimo;
     },
     produto: function() {
-        console.log(this);
-        var carro = {
-            marca: this.marca,
-            modelo: this.modelo,
-            valor: parseFloat(this.valor).toFixed(2),
-            categoria: this.categoria
-        }
+        // TODO transformar desc em String
         return this;
+    },
+    refId: function() {
+        return Meteor.user().emails[0].address;// + new Date().getTime(); // TODO pegar tempo do pagamento.
     }
 });
 
 Template.pagamento.events({
     "submit .pagamento": function(event, template){
 
+        var payment = {
+            refId: Meteor.user().emails[0].address, // TODO Mudar URGENTEMENTE o ref ID
+            data: new Date(),
+            userId: Meteor.userId(),
+            efetuado: false,
+            carrinho: {
+                produtoId: this._id,
+                descricao: { // TODO Mudar para desc do produto
+                    marca: this.marca,
+                    modelo: this.modelo,
+                    categoria: this.categoria
+                },
+                valor: this.valor,
+                quantidade: 1 // TODO Mudar para ser programático
+            }
+        }
+        // console.log(this);
+
+        Meteor.call("pagamentos.insert", payment);
     }
 });

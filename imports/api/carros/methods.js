@@ -13,7 +13,7 @@ Meteor.methods({
           marca : String,
           modelo : String,
           categoria : String,
-          valor : String,//Mudar para Number
+          valor : String,
           creator: {
             createdAt : Date,
             adminId : String,

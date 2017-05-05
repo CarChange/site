@@ -7,3 +7,5 @@ import '/imports/api/users/methods.js';
 import '/imports/api/users/server/publications.js';
 import '/imports/api/carros/methods.js';
 import '/imports/api/carros/server/publications.js';
+import '/imports/api/pagamentos/methods.js';
+import '/imports/api/pagamentos/server/publications.js';
