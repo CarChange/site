@@ -15,6 +15,20 @@ Template.pagamento.helpers({
         var nome = Meteor.user().profile.nome;
         return nome.primeiro + " " + nome.ultimo;
     },
+    telefone: function() {
+        // TODO Adicionar telefone ao user
+        // if(Meteor.user().telefone) {
+        //     return {
+        //         ddd: Meteor.user().telefone.ddd,
+        //         num: Meteor.user().telefone.numero
+        //     }
+        // }
+        // else
+        return {
+            ddd: undefined,
+            num: undefined
+        }
+    },
     produto: function() {
         // TODO transformar desc em String
         return this;

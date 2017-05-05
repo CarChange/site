@@ -27,8 +27,8 @@
 
         <!-- Dados do comprador (opcionais) -->
         <input name="senderName" type="hidden" value="{{userNome}}">
-        <input name="senderAreaCode" type="hidden" value="11">
-        <input name="senderPhone" type="hidden" value="56273440">
+        <input name="senderAreaCode" type="hidden" value="{{telefone.ddd}}">
+        <input name="senderPhone" type="hidden" value="{{telefone.num}}">
         <input name="senderEmail" type="hidden" value="{{userEmail}}">
 
         <!-- submit do form (obrigatório) -->
