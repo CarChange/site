@@ -27,7 +27,7 @@ import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 
 // Set up fixed Layout
 Router.configure({
-  layoutTemplate: 'App_body',
+  layoutTemplate: 'transparente',
   notFoundTemplate: 'App_notFound',
   loadingTemplate: 'loading',
 });
@@ -40,46 +40,45 @@ Router.route("/", {
 
 Router.route("/sobre",
   function () {
-    this.layout('App_body2');
+    this.layout('opaco');
     this.render('sobre');
 });
 
 Router.route("/registrar",
   function () {
-    this.layout('App_body2');
+    this.layout('opaco');
     this.render('registrar');
 });
 
 Router.route("/loja",
   function () {
-    this.layout('App_body2');
+    this.layout('opaco');
     this.render('loja');
 });
 
 Router.route("/login",
   function () {
-    this.layout('App_body2');
+    this.layout('opaco');
     this.render('login');
 });
 
 Router.route("/vantagens",
   function () {
-    this.layout('App_body2');
+    this.layout('opaco');
     this.render('vantagens');
 });
 
 Router.route("/planos",
   function () {
-    this.layout('App_body2');
+    this.layout('opaco');
     this.render('planos');
 });
 
-//TODO mudar nome dos paths (e.g. /admhomeass -> /dashboard_socio)
 Router.route("/membros", {
 name:"membros",
 template:"membros",
 function () {
-    this.layout('App_body2');
+    this.layout('opaco');
 }
 });
 
@@ -90,7 +89,7 @@ Router.route("/membros/consorcio", {
     return Meteor.subscribe('carros');
   },
   onBeforeAction:function(){
-     this.layout('App_body2');
+     this.layout('opaco');
      this.next();
   },
 });
@@ -104,7 +103,7 @@ Router.route("/admin/cadastroConsorcio", {
     return Meteor.subscribe('carros');
   },
   onBeforeAction:function(){
-     this.layout('App_body2');
+     this.layout('opaco');
      this.next();
   },
 });
