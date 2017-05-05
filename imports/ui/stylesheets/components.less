@@ -2682,6 +2682,12 @@ header {
     }
 }
 
+header.corInv {
+	background: url("../img/bg-pattern.png"), @theme-tertiary; /* fallback for old browsers */
+	background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, @theme-tertiary , @theme-secondary); /* Chrome 10-25, Safari 5.1-6 */
+	background: url("../img/bg-pattern.png"), linear-gradient(to left, @theme-tertiary , @theme-secondary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 // Sections
 
 section {
@@ -2726,9 +2732,6 @@ section.features {
 		width: 100%;
 		min-height: auto;
 		overflow-y: hidden;
-		background: url("../img/bg-pattern.png"), @theme-secondary; /* fallback for old browsers */
-		background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, @theme-tertiary , @theme-secondary); /* Chrome 10-25, Safari 5.1-6 */
-		background: url("../img/bg-pattern.png"), linear-gradient(to left, @theme-tertiary , @theme-secondary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 		color: white;
 		.screen {
 
@@ -2782,6 +2785,8 @@ section.features {
 		.text-muted{
 			color: white;
 			font-weight: 100;
+			font-family: 'Lato' sans-serif;
+			font-size: 18px;
 		}
 }
 
