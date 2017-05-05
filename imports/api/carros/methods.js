@@ -47,10 +47,5 @@ Meteor.methods({
 
         Carros.update(carro._id,{$set: carro});
 
-  },
-  'carros.mostraUm' (idCarro){
-      console.log(idCarro);
-      return Carros.findOne({_id: idCarro});
-
   }
 });

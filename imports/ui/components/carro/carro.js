@@ -9,3 +9,9 @@ Template.carro.helpers({
         return this;
     }
 });
+
+Template.carro.events({
+  "click .carro": function(event, template){
+    Router.go("/mostraCarro/"+this._id);
+  }
+});

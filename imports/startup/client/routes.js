@@ -1,6 +1,6 @@
 import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
-import { Carros } from '/imports/api/carros/carros.js';
+
 // Import needed templates
 import '/imports/ui/layouts/index/index.js';
 import '/imports/ui/layouts/index2/index2.js';
@@ -23,6 +23,7 @@ import '/imports/ui/pages/admconsass/admconsass.js';
 import '/imports/ui/pages/admhomeadm/admhomeadm.js';
 import '/imports/ui/pages/admhomeass/admhomeass.js';
 import '/imports/ui/pages/admhomeparc/admhomeparc.js';
+import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 
 // Set up fixed Layout
 Router.configure({
@@ -129,8 +130,9 @@ Router.route("/admconsass",
     this.render('admconsass');
 });
 
-
-Router.route("/mostraCarro/:_id", function() {
-    var carro = Carros.findOne({_id : this.params._id});
-    this.render('mostraCarro',{data : carro});
+Router.route("/mostraCarro/:_id", {
+  template:"mostraCarro",
+  waitOn:function(){
+    return Meteor.subscribe("carro", this.params._id);
+  },
 });

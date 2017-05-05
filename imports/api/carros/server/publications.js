@@ -6,4 +6,8 @@ if(Meteor.isServer){
     Meteor.publish('carros', function carrosPublication() {
         return Carros.find({});
     });
+    Meteor.publish("carro", function carroPublication(carroId){
+        return Carros.find({_id:carroId});
+
+    });
 }
