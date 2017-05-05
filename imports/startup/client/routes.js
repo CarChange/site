@@ -38,61 +38,43 @@ Router.route("/", {
   template:"home",
 });
 
-Router.route("/sobre",
-  function () {
-    this.layout('opaco');
-    this.render('sobre');
+Router.route("/sobre", {
+    layoutTemplate: "opaco",
 });
 
-Router.route("/registrar",
-  function () {
-    this.layout('opaco');
-    this.render('registrar');
+Router.route("/registrar", {
+    layoutTemplate: "opaco",
 });
 
-Router.route("/loja",
-  function () {
-    this.layout('opaco');
-    this.render('loja');
+Router.route("/loja", {
+    layoutTemplate: "opaco",
 });
 
-Router.route("/login",
-  function () {
-    this.layout('opaco');
-    this.render('login');
+Router.route("/login", {
+    layoutTemplate: "opaco",
 });
 
-Router.route("/vantagens",
-  function () {
-    this.layout('opaco');
-    this.render('vantagens');
+Router.route("/vantagens", {
+  layoutTemplate: "opaco",
 });
 
-Router.route("/planos",
-  function () {
-    this.layout('opaco');
-    this.render('planos');
+Router.route("/planos", {
+  layoutTemplate: "opaco",
 });
 
 Router.route("/membros", {
   name:"membros",
   template:"membros",
-  onBeforeAction:function(){
-     this.layout('opaco');
-     this.next();
-  },
+  layoutTemplate: "opaco",
 });
 
 Router.route("/membros/consorcio", {
   name:"consorcio",
   template:"consorcio",
+  layoutTemplate: "opaco",
   waitOn:function(){
     return Meteor.subscribe('carros');
-  },
-  onBeforeAction:function(){
-     this.layout('opaco');
-     this.next();
-  },
+  }
 });
 
 
@@ -100,12 +82,9 @@ Router.route("/membros/consorcio", {
 Router.route("/admin/cadastroConsorcio", {
   name:"cadastroConsorcio",
   template:"cadastroConsorcio",
+  layoutTemplate: "opaco",
   waitOn:function(){
     return Meteor.subscribe('carros');
-  },
-  onBeforeAction:function(){
-     this.layout('opaco');
-     this.next();
   },
 });
 
@@ -116,29 +95,29 @@ Router.route("/pontoVirtual", {
     },
 });
 
-Router.route("/admhomeass",
-  function () {
-    this.layout('Adm_body');
-    this.render('admhomeass');
-});
-
-Router.route("/admhomeparc",
-  function () {
-    this.layout('Adm_body');
-    this.render('admhomeparc');
-});
-
-Router.route("/admhomeadm",
-  function () {
-    this.layout('Adm_body');
-    this.render('admhomeadm');
-});
-
-Router.route("/admconsass",
-  function () {
-    this.layout('Adm_body');
-    this.render('admconsass');
-});
+// Router.route("/admhomeass",
+//   function () {
+//     this.layout('Adm_body');
+//     this.render('admhomeass');
+// });
+//
+// Router.route("/admhomeparc",
+//   function () {
+//     this.layout('Adm_body');
+//     this.render('admhomeparc');
+// });
+//
+// Router.route("/admhomeadm",
+//   function () {
+//     this.layout('Adm_body');
+//     this.render('admhomeadm');
+// });
+//
+// Router.route("/admconsass",
+//   function () {
+//     this.layout('Adm_body');
+//     this.render('admconsass');
+// });
 
 Router.route("/mostraCarro/:_id", {
   template:"mostraCarro",
