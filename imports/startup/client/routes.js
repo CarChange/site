@@ -80,13 +80,15 @@ function () {
     this.render('tempadm');
 });
 
-Router.route("/tempadmcons",
-function () {
-    this.layout('App_body2');
-    this.render('tempadmcons');
+Router.route("/tempadmcons", {
+  waitOn:function(){
+    return Meteor.subscribe('carros');
+  },
+  onBeforeAction:function(){
+     this.layout('App_body2');
+     this.next();
+  },
 });
-
-
 
 Router.route("/tempadmcadcons", {
   waitOn:function(){
