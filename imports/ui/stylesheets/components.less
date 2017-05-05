@@ -2688,6 +2688,12 @@ header.corInv {
 	background: url("../img/bg-pattern.png"), linear-gradient(to left, @theme-tertiary , @theme-secondary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+header.corUp {
+	background: url("../img/bg-pattern.png"), @theme-tertiary; /* fallback for old browsers */
+	background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to bottom, @theme-tertiary , @theme-secondary); /* Chrome 10-25, Safari 5.1-6 */
+	background: url("../img/bg-pattern.png"), linear-gradient(to bottom, @theme-tertiary , @theme-secondary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 // Sections
 
 section {
@@ -2791,22 +2797,21 @@ section.features {
 }
 
 section.cta {
-    position: relative;
-    background-position: center;
-    padding: 250px 0;
+
+    padding: 100px 0;
     .cta-content {
         position: relative;
         z-index: 1;
-        h2 {
+        h3 {
             margin-top: 0;
             margin-bottom: 25px;
             color: white;
-            max-width: 450px;
-            font-size: 50px;
+            max-width: 600px;
+						font-size: 32px;
         }
         @media (min-width: 768px) {
-            h2 {
-                font-size: 80px;
+            h3 {
+                font-size: 32px;
             }
         }
     }
