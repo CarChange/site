@@ -2579,6 +2579,367 @@ margin-bottom: 12px; /* Add some space below the input */
     background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 
+
+
+/*--------------------------------------------------------------------------
++	Template Marketing
+--------------------------------------------------------------------------*/
+// Mixins
+
+.tempMkt .heading-font {
+	font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+	font-weight: 200;
+	letter-spacing: 1px;
+}
+
+.tempMkt .body-font {
+	font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.tempMkt .alt-font {
+	font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+//Template
+
+// Homepage Header
+
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    overflow-y: hidden;
+    background: url("../img/bg-pattern.png"), @theme-secondary; /* fallback for old browsers */
+    background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, @theme-secondary , @theme-tertiary); /* Chrome 10-25, Safari 5.1-6 */
+    background: url("../img/bg-pattern.png"), linear-gradient(to left, @theme-secondary , @theme-tertiary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    .header-content {
+        text-align: center;
+        padding: 150px 0 50px;
+        position: relative;
+        .header-content-inner {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            h1 {
+                margin-top: 0;
+                margin-bottom: 30px;
+                font-size: 30px;
+            }
+            .list-badges {
+                margin-bottom: 25px;
+                img {
+                    height: 50px;
+                    margin-bottom: 25px;
+                }
+            }
+        }
+    }
+    .device-container {
+        max-width: 800px;
+        margin: 20px auto 20px;
+        .screen img {
+            border-radius: 3px;
+				.device-mockup img {
+					height: auto;
+    			max-width: 100%;
+				}
+        }
+    }
+    @media (min-width: 768px) {
+        min-height: 100%;
+        .header-content {
+            text-align: left;
+            padding: 0;
+            height: 100vh;
+            .header-content-inner {
+                max-width: none;
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                h1 {
+                    font-size: 35px;
+                }
+            }
+        }
+        .device-container {
+            width: 100%;
+            max-height: 100%;
+            margin: 200px auto 0 40px;
+        }
+				img {
+					height: auto;
+    			max-width: 100%;
+				}
+    }
+    @media (min-width: 992px) {
+        .header-content .header-content-inner h1 {
+            font-size: 50px;
+        }
+    }
+}
+
+// Sections
+
+section {
+    padding: 100px 0;
+    h2 {
+        font-size: 50px;
+    }
+}
+
+section.download {
+    padding: 150px 0;
+    position: relative;
+    h2 {
+        margin-top: 0;
+        font-size: 50px;
+    }
+    .badges {
+        .badge-link {
+            display: block;
+            margin-bottom: 25px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            img {
+                height: 60px;
+            }
+            @media(min-width: 768px) {
+                display: inline-block;
+                margin-bottom: 0;
+            }
+        }
+    }
+    @media(min-width: 768px) {
+        h2 {
+            font-size: 70px;
+        }
+    }
+}
+
+section.features {
+    .section-heading {
+        h2 {
+            margin-top: 0;
+        }
+        p {
+            margin-bottom: 0;
+        }
+        margin-bottom: 100px;
+    }
+    .device-container,
+    .feature-item {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .device-container {
+        margin-bottom: 100px;
+        @media(min-width: 992px) {
+            margin-bottom: 0;
+        }
+    }
+    .feature-item {
+        text-align: center;
+        margin-bottom: 100px;
+        h3 {
+            font-size: 30px;
+        }
+        i {
+            font-size: 80px;
+              background: -webkit-linear-gradient(to left, @theme-secondary , @theme-tertiary);
+              background: linear-gradient(to left, @theme-secondary , @theme-tertiary);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+        }
+    }
+    @media(min-width: 992px) {
+        .device-container,
+        .feature-item {
+            max-width: none;
+        }
+    }
+}
+
+section.cta {
+    position: relative;
+    background-position: center;
+    padding: 250px 0;
+    .cta-content {
+        position: relative;
+        z-index: 1;
+        h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: white;
+            max-width: 450px;
+            font-size: 50px;
+        }
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 80px;
+            }
+        }
+    }
+    .overlay {
+        height: 100%;
+        width: 100%;
+        background-color: fade(black, 50%);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+section.contact {
+    text-align: center;
+    h2 {
+        margin-top: 0;
+        margin-bottom: 25px;
+        i {
+            color: @brand-google-plus;
+        }
+    }
+    ul.list-social {
+        margin-bottom: 0;
+        li {
+            a {
+                display: block;
+                height: 80px;
+                width: 80px;
+                line-height: 80px;
+                font-size: 40px;
+                border-radius: 100%;
+                color: white;
+            }
+            &.social-twitter {
+                a {
+                    background-color: @brand-twitter;
+                    &:hover {
+                        background-color: darken(@brand-twitter, 5%);
+                    }
+                }
+            }
+            &.social-facebook {
+                a {
+                    background-color: @brand-facebook;
+                    &:hover {
+                        background-color: darken(@brand-facebook, 5%);
+                    }
+                }
+            }
+            &.social-google-plus {
+                a {
+                    background-color: @brand-google-plus;
+                    &:hover {
+                        background-color: darken(@brand-google-plus, 5%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: @gray-darker;
+    padding: 25px 0;
+    color: fade(white, 30%);
+    text-align: center;
+    p {
+        font-size: 12px;
+        margin: 0;
+    }
+    ul {
+        margin-bottom: 0;
+        li {
+            a {
+                font-size: 12px;
+                color: fade(white, 30%);
+                &:hover,
+                &:focus,
+                &:active,
+                &.active {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+// Bootstrap Overrides
+
+.bg-primary {
+    background: @theme-primary;
+    background: -webkit-linear-gradient(@theme-primary , darken(@theme-primary, 5%));
+    background: linear-gradient(@theme-primary , darken(@theme-primary, 5%));
+}
+
+.text-primary {
+    color: @theme-primary;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+// Button Styles
+.btn-outline {
+    color: white;
+    border-color: white;
+    border: 1px solid;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        color: white;
+				color: #333;
+			  text-shadow: none; /* Prevent inheritence from `body` */
+			  background-color: #fff;
+			  border: 1px solid #fff;
+    }
+}
+
+.btn {
+    border-radius: 300px;
+}
+
+// Extras
+// -- Highlight Color Customization
+::-moz-selection {
+    color: white;
+    text-shadow: none;
+    background: @gray-darker;
+}
+
+::selection {
+    color: white;
+    text-shadow: none;
+    background: @gray-darker;
+}
+
+img::selection {
+    color: white;
+    background: transparent;
+}
+
+img::-moz-selection {
+    color: white;
+    background: transparent;
+}
+
+body {
+    webkit-tap-highlight-color: @gray-darker;
+	}
+
+
+
+
+
+
 /*
 * Based on Cover by https://twitter.com/mdo"  @mdo
 *
