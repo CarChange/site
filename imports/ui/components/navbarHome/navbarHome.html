@@ -11,12 +11,12 @@
           </li>
           {{#if isInRole 'admin'}}
             <li class="navbar-left menunormal">
-              <a href="{{pathFor route='tempadmcadcons'}}">Área do Adminho</a>
+              <a href="{{pathFor route='cadastroConsorcio'}}">Área do Adminho</a>
             </li>
           {{/if}}
           {{#if isInRole 'user,admin'}}
             <li class="navbar-left menunormal">
-                <a href="{{pathFor route='tempadm'}}">Área de Membros</a>
+                <a href="{{pathFor route='membros'}}">Área de Membros</a>
             </li>
             <li class="navbar-right menuextras">
                 <a href="#" class="logout">Logout</a>
@@ -66,12 +66,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       {{#if isInRole 'admin'}}
       <ul class="nav navbar-nav">
-        <li><a href="{{pathFor route='tempadmcadcons'}}">Área do Adminho</a></li>
+        <li><a href="{{pathFor route='cadastroConsorcio'}}">Área do Adminho</a></li>
       </ul>
       {{/if}}
       {{#if isInRole 'user,admin'}}
       <ul class="nav navbar-nav">
-        <li><a href="{{pathFor route='tempadm'}}">Área de Membros</a></li>
+        <li><a href="{{pathFor route='membros'}}">Área de Membros</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="navbar-right"><a href="{{pathFor route='loja'}}"><i class="glyphicon glyphicon-shopping-cart icon-white"></i>&nbsp; Loja</a></li>

@@ -16,9 +16,9 @@ import '/imports/ui/pages/registrar/registrar.js';
 import '/imports/ui/pages/sobre/sobre.js';
 import '/imports/ui/pages/vantagens/vantagens.js';
 import '/imports/ui/pages/planos/planos.js';
-import '/imports/ui/pages/tempadm/tempadm.js';
-import '/imports/ui/pages/tempadmcons/tempadmcons.js'
-import '/imports/ui/pages/tempadmcadcons/tempadmcadcons.js'
+import '/imports/ui/pages/membros/membros.js';
+import '/imports/ui/pages/consorcio/consorcio.js'
+import '/imports/ui/pages/cadastroConsorcio/cadastroConsorcio.js'
 import '/imports/ui/pages/admconsass/admconsass.js';
 import '/imports/ui/pages/admhomeadm/admhomeadm.js';
 import '/imports/ui/pages/admhomeass/admhomeass.js';
@@ -75,13 +75,17 @@ Router.route("/planos",
 });
 
 //TODO mudar nome dos paths (e.g. /admhomeass -> /dashboard_socio)
-Router.route("/tempadm",
+Router.route("/membros", {
+name:"membros",
+template:"membros",
 function () {
     this.layout('App_body2');
-    this.render('tempadm');
+}
 });
 
-Router.route("/tempadmcons", {
+Router.route("/membros/consorcio", {
+  name:"consorcio",
+  template:"consorcio",
   waitOn:function(){
     return Meteor.subscribe('carros');
   },
@@ -91,7 +95,11 @@ Router.route("/tempadmcons", {
   },
 });
 
-Router.route("/tempadmcadcons", {
+
+
+Router.route("/admin/cadastroConsorcio", {
+  name:"cadastroConsorcio",
+  template:"cadastroConsorcio",
   waitOn:function(){
     return Meteor.subscribe('carros');
   },
@@ -100,6 +108,8 @@ Router.route("/tempadmcadcons", {
      this.next();
   },
 });
+
+
 Router.route("/pontoVirtual", {
     waitOn:function(){
         return Meteor.subscribe('pontos');

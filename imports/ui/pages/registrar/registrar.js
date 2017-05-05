@@ -36,7 +36,7 @@ Template.registrar.events({
             //se conseguir criar
             swal("Sucesso!", "Registro realizado!");
             Meteor.loginWithPassword(user.email, user.password);
-            Router.go('/tempadm');
+            Router.go('membros');
          }
         });
      }else{
