@@ -1,55 +1,6 @@
 <template name="navbarSite">
 
-<div class="mainmenu-wrapper visible-lg visible-md">
-  <div class="container">
-    <nav id="mainmenu" class="mainmenu">
-  					<ul>
-  						<li class="logo-wrapper navbar-left">
-                <a href="{{pathFor route='home'}}">
-                  <img src="/img/g12.png" alt="CarChange Clube Automotivo">
-                </a>
-              </li>
-              {{#if isInRole 'admin'}}
-                <li class="navbar-left menunormal">
-                  <a href="{{pathFor route='cadastroConsorcio'}}">Área do Adminho</a>
-                </li>
-              {{/if}}
-              {{#if isInRole 'user,admin'}}
-                <li class="navbar-left menunormal">
-                    <a href="{{pathFor route='membros'}}">Área de Membros</a>
-                </li>
-                <li class="navbar-right menuextras">
-                    <a href="#" class="logout">Logout</a>
-                </li>
-                <li class="navbar-right menuextras maisBaixo">
-                    <p>Bem vindo, {{currentUser.profile.nome.primeiro}}!</p>
-                </li>
-              {{else}}
-                <li class="navbar-left menunormal">
-    							<a href="{{pathFor route='sobre'}}">Como Funciona</a>
-    						</li>
-    						<li class="navbar-left menunormal">
-    							<a href="{{pathFor route='vantagens'}}">Vantagens</a>
-    						</li>
-                <li class="navbar-left menunormal">
-  							<a href="{{pathFor route='planos'}}">Planos</a>
-    						</li>
-                <li class="navbar-right menuextras">
-                    <a href="{{pathFor route='login'}}">Entrar</a>
-                </li>
-                <li class="navbar-right menuextras">
-                    <a href="{{pathFor route='registrar'}}">Cadastre-se</a>
-                </li>
-              {{/if}}
-              <li class="shopping-cart-items navbar-right menuextras">
-                  <a href="#" style="color:gray;"><i class="glyphicon glyphicon-shopping-cart icon-white"></i>&nbsp; Loja (em breve)</a>
-              </li>
-            </ul>
-			</nav>
-	</div>
-</div>
-
-<nav class="navbar navbar-inverse hidden-lg hidden-md">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
