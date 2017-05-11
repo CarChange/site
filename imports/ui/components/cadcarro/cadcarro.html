@@ -7,8 +7,14 @@
         <h4>Modelo</h4>
         <input type="text" name="modelo" class="pretoText" required>
         <p>&nbsp;</p>
-        <h4>Valor</h4>
-        <input type="number" name="valor" step="0.01" min="0.00" max="9999999.00" class="pretoText">
+        <h4>Valor Total</h4>
+        <input type="number" name="valorTotal" step="0.01" min="0.00" max="9999999.00" class="pretoText" required>
+        <p>&nbsp;</p>
+        <h4>Valor da Parcela</h4>
+        <input type="number" name="valorParc" step="0.01" min="0.00" max="9999999.00" class="pretoText" required>
+        <p>&nbsp;</p>
+        <h4>Número de Parcelas</h4>
+        <input type="number" name="numParc" min="1" max="80" class="pretoText" required>
         <p>&nbsp;</p>
         <h4>Categoria</h4>
         <p><input type="radio" name="categoria" value="integral" checked> Integral &nbsp;&nbsp;&nbsp;

@@ -11,7 +11,9 @@ Template.cadcarro.events({
             marca: target.marca.value,
             modelo: target.modelo.value,
             categoria: target.categoria.value,
-            valor: parseFloat(target.valor.value).toFixed(2),
+            valorTotal: parseFloat(target.valorTotal.value).toFixed(2),
+            valorParc: parseFloat(target.valorParc.value).toFixed(2),
+            numParc: target.numParc.value,
             creator: {
                 createdAt: new Date(),
                 adminId: Meteor.userId(),

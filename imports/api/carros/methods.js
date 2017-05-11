@@ -13,8 +13,10 @@ Meteor.methods({
           marca : String,
           modelo : String,
           categoria : String,
-          valor : String,
-          creator: {
+          valorTotal : String,
+          valorParc : String,
+          numParc : String,
+          creator : {
             createdAt : Date,
             adminId : String,
           }
