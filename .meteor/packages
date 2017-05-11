@@ -34,3 +34,4 @@ jquery@1.11.10
 matb33:collection-hooks
 altapp:recaptcha
 ejson@1.0.13
+momentjs:moment

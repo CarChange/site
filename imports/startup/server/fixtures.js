@@ -15,7 +15,8 @@ Meteor.startup(() => {
             nome: {
                 primeiro: "ad",
                 ultimo: "minho"
-            }
+            },
+            dataCadastro: new Date(2017, 4, 3)    //mês varia de 0 a 11
         }
     };
     Accounts.createUser(admin);

@@ -19,7 +19,13 @@ Template.registrar.events({
        const user = {
          email: event.target.email.value,
          password: event.target.senha.value,
-         profile: {nome:{primeiro: event.target.nome.value, ultimo: event.target.sobrenome.value }},
+         profile: {
+             nome: {
+                 primeiro: event.target.nome.value,
+                 ultimo: event.target.sobrenome.value
+             },
+             dataCadastro: new Date()
+         },
        }
 
        //Call pro servidor
