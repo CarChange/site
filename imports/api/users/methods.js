@@ -26,6 +26,7 @@ Meteor.methods({
     if (!userExists) {
       const userId = Accounts.createUser(user);
       Roles.addUsersToRoles(userId, 'user');
+      console.log("Usuário registrado (" + user.email + ")");
       return true;
     }else{
       throw new Meteor.Error(23,'Email já existente!',"Favor escolher outro Email.");

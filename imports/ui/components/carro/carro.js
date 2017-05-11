@@ -12,7 +12,7 @@ Template.carro.helpers({
 Template.carro.events({
   "click .carro": function(event, template){
     Router.go("/mostraCarro/"+this._id);
-},
+  },
   "click .remove": function() {
     Meteor.call("carros.remove", this._id);
   }
