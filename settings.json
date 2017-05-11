@@ -1,7 +1,0 @@
-{
-  "galaxy.meteor.com": {
-     "env": {
-       "MONGO_URL": "mongodb://carchange:Rm3.23Rm6.23@carchange.mongodb.uhserver.com:27017/carchange"
-     }
-   }
-}
