@@ -66,6 +66,10 @@ Router.route("/membros", {
   name:"membros",
   template:"membros",
   layoutTemplate: "opaco",
+  onBeforeAction:function(){
+    if(Meteor.userId() && !Roles.userIsInRole(Meteor.userId(),['user','admin']))
+      this.redirect('login');
+  },
 });
 
 Router.route("/membros/consorcio", {
@@ -74,7 +78,12 @@ Router.route("/membros/consorcio", {
   layoutTemplate: "opaco",
   waitOn:function(){
     return Meteor.subscribe('carros');
-  }
+  },
+  onBeforeAction:function(){
+    Meteor._sleepForMs(2000);
+    if(Meteor.userId() && !Roles.userIsInRole(Meteor.userId(),['user','admin']))
+      this.redirect('login');
+  },
 });
 
 
@@ -86,6 +95,11 @@ Router.route("/admin/cadastroConsorcio", {
   waitOn:function(){
     return Meteor.subscribe('carros');
   },
+  onBeforeAction:function(){
+    Meteor._sleepForMs(2000);
+    if(Meteor.userId() && !Roles.userIsInRole(Meteor.userId(),'admin'))
+      this.redirect('login');
+  },
 });
 
 
@@ -94,6 +108,7 @@ Router.route("/pontoVirtual", {
         return Meteor.subscribe('pontos');
     },
 });
+
 
 // Router.route("/admhomeass",
 //   function () {
