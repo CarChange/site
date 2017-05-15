@@ -72,7 +72,7 @@ Router.route("/membros", {
   },
 });
 
-Router.route("/membros/consorcio", {
+Router.route("/loja/consorcio", {
   name:"consorcio",
   template:"consorcio",
   layoutTemplate: "opaco",
