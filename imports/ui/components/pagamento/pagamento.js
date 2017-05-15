@@ -33,6 +33,9 @@ Template.pagamento.helpers({
         // TODO transformar desc em String
         return this;
     },
+    descricao: function() {
+        return this.marca + " " + this.modelo;
+    },
     refId: function() {
         return Meteor.user().emails[0].address;// + new Date().getTime(); // TODO pegar tempo do pagamento.
     }
@@ -53,7 +56,7 @@ Template.pagamento.events({
                     modelo: this.modelo,
                     categoria: this.categoria
                 },
-                valor: this.valor,
+                valor: this.valorParc,
                 quantidade: 1 // TODO Mudar para ser programático
             }
         }

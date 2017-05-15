@@ -136,6 +136,7 @@ Router.route("/pontoVirtual", {
 
 Router.route("/mostraCarro/:_id", {
   template:"mostraCarro",
+  layoutTemplate: "opaco",
   waitOn:function(){
     return Meteor.subscribe("carro", this.params._id);
   },

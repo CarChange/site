@@ -5,9 +5,9 @@
         <input name="currency" type="hidden" value="BRL">
 
         <!-- Itens do pagamento (ao menos um item é obrigatório) -->
-        <input name="itemId1" type="hidden" value="0001">
-        <input name="itemDescription1" type="hidden" value="{{produto.modelo}}">
-        <input name="itemAmount1" type="hidden" value="{{produto.valor}}"> <!-- valor do item -->
+        <input name="itemId1" type="hidden" value="{{produto._id}}">
+        <input name="itemDescription1" type="hidden" value="{{descricao}}">
+        <input name="itemAmount1" type="hidden" value="{{produto.valorParc}}"> <!-- valor do item -->
         <input name="itemQuantity1" type="hidden" value="1">
         <!-- <input name="itemWeight1" type="hidden" value="1000"> -->
 
