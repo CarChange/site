@@ -25,6 +25,16 @@ import '/imports/ui/pages/admhomeass/admhomeass.js';
 import '/imports/ui/pages/admhomeparc/admhomeparc.js';
 import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 
+membrosController = RouteController.extend({
+  onBeforeAction: function () {
+    // do some login checks or other custom logic
+    if(!Roles.userIsInRole(Meteor.userId(),['user','admin'])){
+      this.redirect('login');
+    }
+    this.next();
+  }
+});
+
 // Set up fixed Layout
 Router.configure({
   layoutTemplate: 'transparente',
@@ -66,26 +76,16 @@ Router.route("/membros", {
   name:"membros",
   template:"membros",
   layoutTemplate: "opaco",
-  onBeforeAction:function(){
-    if(!Roles.userIsInRole(Meteor.userId(),['user','admin']))
-      this.redirect('login');
-
-    this.next();
-  },
+  controller: "membrosController",
 });
 
 Router.route("/loja/consorcio", {
   name:"consorcio",
   template:"consorcio",
   layoutTemplate: "opaco",
+  controller: "membrosController",
   waitOn:function(){
     return Meteor.subscribe('carros');
-  },
-  onBeforeAction:function(){
-    if(!Roles.userIsInRole(Meteor.userId(),['user','admin']))
-      this.redirect('login');
-
-    this.next();
   },
 });
 
@@ -95,15 +95,9 @@ Router.route("/admin/cadastroConsorcio", {
   name:"cadastroConsorcio",
   template:"cadastroConsorcio",
   layoutTemplate: "opaco",
+  controller: "membrosController",
   waitOn:function(){
     return Meteor.subscribe('carros');
-  },
-  onBeforeAction:function(){
-
-    if(Meteor.userId() && !Roles.userIsInRole(Meteor.userId(),'admin'))
-      this.redirect('login');
-
-    this.next();
   },
 });
 
