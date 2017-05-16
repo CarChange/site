@@ -67,8 +67,10 @@ Router.route("/membros", {
   template:"membros",
   layoutTemplate: "opaco",
   onBeforeAction:function(){
-    if(Meteor.userId() && !Roles.userIsInRole(Meteor.userId(),['user','admin']))
+    if(!Roles.userIsInRole(Meteor.userId(),['user','admin']))
       this.redirect('login');
+
+    this.next();
   },
 });
 
@@ -80,9 +82,10 @@ Router.route("/loja/consorcio", {
     return Meteor.subscribe('carros');
   },
   onBeforeAction:function(){
-    Meteor._sleepForMs(2000);
-    if(Meteor.userId() && !Roles.userIsInRole(Meteor.userId(),['user','admin']))
+    if(!Roles.userIsInRole(Meteor.userId(),['user','admin']))
       this.redirect('login');
+
+    this.next();
   },
 });
 
@@ -96,9 +99,11 @@ Router.route("/admin/cadastroConsorcio", {
     return Meteor.subscribe('carros');
   },
   onBeforeAction:function(){
-    Meteor._sleepForMs(2000);
+
     if(Meteor.userId() && !Roles.userIsInRole(Meteor.userId(),'admin'))
       this.redirect('login');
+
+    this.next();
   },
 });
 

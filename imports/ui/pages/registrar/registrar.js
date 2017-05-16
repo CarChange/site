@@ -41,8 +41,14 @@ Template.registrar.events({
          if(result){
             //se conseguir criar
             swal("Sucesso!", "Registro realizado!");
-            Meteor.loginWithPassword(user.email, user.password);
-            Router.go('membros');
+            //Router.go tem que estar dentro do callback de loginWithPassword
+            Meteor.loginWithPassword(user.email, user.password, function(error) {
+              if(error){
+                //pega msg de erros do loginWithPassword
+                swal(error.reason, error.details,'error');
+              }
+              Router.go('membros');
+            });
          }
         });
      }else{

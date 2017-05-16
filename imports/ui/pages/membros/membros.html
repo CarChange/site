@@ -1,55 +1,64 @@
 <template name="membros">
-
-<header class="corUp">
-  <!-- Page Title -->
-<div class="section section-breadcrumbs">
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Área do membro</h1>
+{{#if authInProcess}}
+  {{> loading}}
+{{else}}
+  {{#if isInRole 'user'}}
+    <header class="corUp">
+      <!-- Page Title -->
+    <div class="section section-breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Área do membro</h1>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 memberBox">
-      <h2>Sua conta</h2>
-      <!-- inserir um #if/else aqui para identificar qual é o tipo de conta
-      | If pagou = associado
-      | Else = link "Torne-se um associado" -->
-
-      <!-- mensagem prospecção
-      <h3><a href="#">Torne-se um associado!</a></h3>
-      -->
-
-      <!-- mensagem para associado -->
-      <p>Você se cadastrou em {{dataCadastro}}.</p>
-      <p>Restam X meses de clube.</p>
-      <a href="#"><em>Alterar pagamento</em></a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6 memberBox">
-
-
     </div>
 
-    <div class="col-md-6 memberBox">
-      <h2>Vouchers</h2>
-      <!-- inserir um #if/else aqui para mostrar apenas para associados -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 memberBox">
+          <h2>Sua conta</h2>
+          <!-- inserir um #if/else aqui para identificar qual é o tipo de conta
+          | If pagou = associado
+          | Else = link "Torne-se um associado" -->
 
-      <!-- mensagem prospecção
-      <p>Desculpe, apenas associados CarChange têm acesso aos vouchers.<a href="#"><em>Associe-se já</em></a></p>
-      -->
+          <!-- mensagem prospecção
+          <h3><a href="#">Torne-se um associado!</a></h3>
+          -->
 
-      <!-- mensagem para associado -->
-      <p>Em breve!</p>
+          <!-- mensagem para associado -->
+          <p>Você se cadastrou em {{dataCadastro}}.</p>
+          <p>Restam X meses de clube.</p>
+          <a href="#"><em>Alterar pagamento</em></a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 memberBox">
+
+
+        </div>
+
+        <div class="col-md-6 memberBox">
+          <h2>Vouchers</h2>
+          <!-- inserir um #if/else aqui para mostrar apenas para associados -->
+
+          <!-- mensagem prospecção
+          <p>Desculpe, apenas associados CarChange têm acesso aos vouchers.<a href="#"><em>Associe-se já</em></a></p>
+          -->
+
+          <!-- mensagem para associado -->
+          <p>Em breve!</p>
+        </div>
+      </div>
+
     </div>
-  </div>
+    </header>
+    {{else}}
+      <p>Você não tem autorização para ver essa página</p>
+      <!-- <p>Por favor <a href="/login">faça seu login</a> para ver essa página.</p> -->
+    {{/if}}
+{{/if}}
 
-</div>
-</header>
 </template>
