@@ -1,2 +1,2 @@
-import '/imports/ui/pages/admDash/admUserDash.html';
+import '/imports/ui/pages/admUserDash/admUserDash.html';
 import '/imports/ui/components/listUsers/listUsers.js';
