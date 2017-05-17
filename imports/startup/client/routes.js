@@ -24,6 +24,7 @@ import '/imports/ui/pages/admhomeass/admhomeass.js';
 import '/imports/ui/pages/admhomeparc/admhomeparc.js';
 import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 import '/imports/ui/pages/email/email.js';
+import '/imports/ui/pages/admUserDash/admUserDash.js';
 
 membrosController = RouteController.extend({
   onBeforeAction: function () {
@@ -98,7 +99,7 @@ Router.route("/admin/permissoes", {
     template: "admUserDash",
     controller: "membrosController",
     waitOn:function(){
-        return Meteor.subscribe('pontos');
+        return Meteor.subscribe('users');
     },
 });
 
