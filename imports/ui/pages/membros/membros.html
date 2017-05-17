@@ -2,7 +2,7 @@
 {{#if authInProcess}}
   {{> loading}}
 {{else}}
-  {{#if isInRole 'user'}}
+  {{#if isInRole 'user,admin'}}
     <header class="corUp">
       <!-- Page Title -->
     <div class="section section-breadcrumbs">
