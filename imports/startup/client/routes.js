@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 
 // Import needed templates
 import '/imports/ui/layouts/index/index.js';
-import '/imports/ui/layouts/index2/index2.js';
 import '/imports/ui/layouts/adm/adm.js';
 //import '/imports/ui/pages/carrinho/carrinho.js';
 import '/imports/ui/pages/home/home.js';
@@ -48,41 +47,27 @@ Router.route("/", {
   template:"home",
 });
 
-Router.route("/sobre", {
-    layoutTemplate: "opaco",
-});
+Router.route("/sobre");
 
-Router.route("/registrar", {
-    layoutTemplate: "opaco",
-});
+Router.route("/registrar");
 
-Router.route("/loja", {
-    layoutTemplate: "opaco",
-});
+Router.route("/loja");
 
-Router.route("/login", {
-    layoutTemplate: "opaco",
-});
+Router.route("/login");
 
-Router.route("/vantagens", {
-  layoutTemplate: "opaco",
-});
+Router.route("/vantagens");
 
-Router.route("/planos", {
-  layoutTemplate: "opaco",
-});
+Router.route("/planos");
 
 Router.route("/membros", {
   name:"membros",
   template:"membros",
-  layoutTemplate: "opaco",
   controller: "membrosController",
 });
 
 Router.route("/loja/consorcio", {
   name:"consorcio",
   template:"consorcio",
-  layoutTemplate: "opaco",
   controller: "membrosController",
   waitOn:function(){
     return Meteor.subscribe('carros');
@@ -94,7 +79,6 @@ Router.route("/loja/consorcio", {
 Router.route("/admin/cadastroConsorcio", {
   name:"cadastroConsorcio",
   template:"cadastroConsorcio",
-  layoutTemplate: "opaco",
   controller: "membrosController",
   waitOn:function(){
     return Meteor.subscribe('carros');
@@ -108,6 +92,14 @@ Router.route("/pontoVirtual", {
     },
 });
 
+Router.route("/admin/permissoes", {
+    name: "admPermissoes",
+    template: "admPermissoes",
+    controller: "membrosController",
+    waitOn:function(){
+        return Meteor.subscribe('pontos');
+    },
+});
 
 // Router.route("/admhomeass",
 //   function () {
@@ -135,7 +127,6 @@ Router.route("/pontoVirtual", {
 
 Router.route("/mostraCarro/:_id", {
   template:"mostraCarro",
-  layoutTemplate: "opaco",
   waitOn:function(){
     return Meteor.subscribe("carro", this.params._id);
   },

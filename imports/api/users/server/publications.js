@@ -18,9 +18,7 @@ if(Meteor.isServer){
       Meteor.publish('user', function usersPublication() {
           if(Roles.userIsInRole(id,'user')){
             return Users.findOne({_id: id },{fields : {profile:1}});
+          }
       });
-
-
-
-    }
+  }
 }
