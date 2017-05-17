@@ -94,8 +94,8 @@ Router.route("/pontoVirtual", {
 });
 
 Router.route("/admin/permissoes", {
-    name: "admPermissoes",
-    template: "admPermissoes",
+    name: "admUserDash",
+    template: "admUserDash",
     controller: "membrosController",
     waitOn:function(){
         return Meteor.subscribe('pontos');
