@@ -1,0 +1,8 @@
+<template name="listUsers">
+  <input type="text" name="procuraUser" placeholder="Procure um usuário..." class="procuraUser pretoText">
+  <ul class="ulUser">
+    {{#each users}}
+      {{> user}}
+    {{/each}}
+  </ul>
+</template>
