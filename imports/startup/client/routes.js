@@ -98,7 +98,7 @@ Router.route("/admin/permissoes", {
     template: "admUserDash",
     controller: "membrosController",
     waitOn:function(){
-        return Meteor.subscribe('pontos');
+        return Meteor.subscribe('users');
     },
 });
 
