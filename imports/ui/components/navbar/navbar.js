@@ -3,11 +3,7 @@ import './navbar.html';
 
 Template.navbar.helpers({
   isInHome: function(){
-    if (Router.current().location.get().path === "/")
-      return true;
-    else {
-      return false;
-    }
+      return Router.current().location.get().path === "/";
   }
 });
 
