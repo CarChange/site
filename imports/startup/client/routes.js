@@ -24,6 +24,7 @@ import '/imports/ui/pages/admhomeadm/admhomeadm.js';
 import '/imports/ui/pages/admhomeass/admhomeass.js';
 import '/imports/ui/pages/admhomeparc/admhomeparc.js';
 import '/imports/ui/pages/mostraCarro/mostraCarro.js';
+import '/imports/ui/pages/email/email.js';
 
 // Set up fixed Layout
 Router.configure({
@@ -141,3 +142,5 @@ Router.route("/mostraCarro/:_id", {
     return Meteor.subscribe("carro", this.params._id);
   },
 });
+
+Router.route("email");
