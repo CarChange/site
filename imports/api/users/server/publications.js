@@ -5,15 +5,23 @@ import { Users } from '../users.js';
 if(Meteor.isServer){
   console.log("ENTRA POW");
       Meteor.publish('users', function usersPublication() {
-          if(Roles.userIsInRole(this.userId,'admin')){
+        if(Roles.userIsInRole(this.userId,'admin')){
             return Users.find({});
-          }
+        }else {
+          //Redirecionar para não autorizado
+          this.stop();
+          return;
+        }
       });
 
       Meteor.publish('user', function userPublication() {
-          if(Roles.userIsInRole(this.userId,'user')){
+        if(Roles.userIsInRole(this.userId,'user')){
             return Users.findOne({_id: id },{fields : {profile:1}});
-          }
+        }else {
+          //Redirecionar para não autorizado
+          this.stop();
+          return;
+        }
       });
 
 }

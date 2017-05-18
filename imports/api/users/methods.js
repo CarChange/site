@@ -25,7 +25,7 @@ Meteor.methods({
 
     if (!userExists) {
       const userId = Accounts.createUser(user);
-      Roles.addUsersToRoles(userId, 'user');
+      Roles.addUsersToRoles(userId, 'user.viewer');
       console.log("Usuário registrado (" + user.email + ")");
       return true;
     }else{
@@ -40,4 +40,13 @@ Meteor.methods({
     });
     */
   },
+  'users.remove'() {
+
+  },
+  'users.changeRole'(roles) {
+      if(Roles.userIsInRole(this.userId, role, Roles.GLOBAL_GROUP))
+        Roles.removeUsersFromRoles(this.userId, roles, Roles.GLOBAL_GROUP);
+      else
+        Roles.addUsersToRoles(this.userId, role, Roles.GLOBAL_GROUP);
+  }
 });
