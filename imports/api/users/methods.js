@@ -25,7 +25,7 @@ Meteor.methods({
 
     if (!userExists) {
       const userId = Accounts.createUser(user);
-      Roles.addUsersToRoles(userId, 'user.viewer');
+      Roles.addUsersToRoles(userId, 'user');
       console.log("Usuário registrado (" + user.email + ")");
       return true;
     }else{
