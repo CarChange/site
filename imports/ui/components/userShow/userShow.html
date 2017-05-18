@@ -1,3 +1,10 @@
 <template name="userShow">
+  <li>
     <span>{{user.profile.nome.primeiro}}</span><br>
+    <select class="dropdownRoles" name="dropdownRoles" form="form-roles">
+      <option class="pretoText" value="admin">admin</option>
+      <option class="pretoText" value="user">user</option>
+    </select>
+    <button class="pretoText" type="submit">Atualizar</button>
+  </li>
 </template>

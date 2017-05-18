@@ -10,5 +10,8 @@ Template.userShow.helpers({
 });
 
 Template.userShow.events({
-
+  "submit .form-roles": function(event, template){
+    event.preventDefault();
+    
+  }
 });

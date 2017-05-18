@@ -7,8 +7,6 @@ if(Meteor.isServer){
       Meteor.publish('users', function usersPublication() {
           if(Roles.userIsInRole(this.userId,'admin')){
             return Users.find({});
-          }else {
-            throw new Meteor.Error("bad", "stuff");
           }
       });
 

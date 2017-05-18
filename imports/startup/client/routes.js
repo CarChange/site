@@ -19,7 +19,7 @@ import '/imports/ui/pages/membros/membros.js';
 import '/imports/ui/pages/consorcio/consorcio.js'
 import '/imports/ui/pages/cadastroConsorcio/cadastroConsorcio.js'
 import '/imports/ui/pages/admconsass/admconsass.js';
-import '/imports/ui/pages/admhomeadm/admhomeadm.js';
+import '/imports/ui/pages/admhome/admhome.js';
 import '/imports/ui/pages/admhomeass/admhomeass.js';
 import '/imports/ui/pages/admhomeparc/admhomeparc.js';
 import '/imports/ui/pages/mostraCarro/mostraCarro.js';
@@ -115,11 +115,11 @@ Router.route("/admin/permissoes", {
 //     this.render('admhomeparc');
 // });
 //
-// Router.route("/admhomeadm",
-//   function () {
-//     this.layout('Adm_body');
-//     this.render('admhomeadm');
-// });
+ Router.route("/admin",{
+ name: "admhome",
+ template: "admhome",
+ controller: "membrosController",
+ });
 //
 // Router.route("/admconsass",
 //   function () {
