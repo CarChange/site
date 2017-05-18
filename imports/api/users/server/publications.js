@@ -3,22 +3,19 @@ import { Users } from '../users.js';
 
 //Isso é um gato - MEOW
 if(Meteor.isServer){
-  if(this.user){
-
-    var id = this.userId();
-
+  console.log("ENTRA POW");
       Meteor.publish('users', function usersPublication() {
-          if(Roles.userIsInRole(id,'user')){
-            return Users.findOne({_id: id },{fields : {profile:1}});
-          }else if(Roles.userIsInRole(id,'admin')){
+          if(Roles.userIsInRole(this.userId,'admin')){
             return Users.find({});
+          }else {
+            throw new Meteor.Error("bad", "stuff");
           }
       });
 
-      Meteor.publish('user', function usersPublication() {
-          if(Roles.userIsInRole(id,'user')){
+      Meteor.publish('user', function userPublication() {
+          if(Roles.userIsInRole(this.userId,'user')){
             return Users.findOne({_id: id },{fields : {profile:1}});
           }
       });
-  }
+
 }

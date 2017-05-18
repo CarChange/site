@@ -1,5 +1,5 @@
 import './listUsers.html';
-import '../user/user.js';
+import '../userShow/userShow.js';
 
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';

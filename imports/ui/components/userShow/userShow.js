@@ -1,14 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
-import './user.html';
+import './userShow.html';
 
-Template.user.helpers({
+Template.userShow.helpers({
     user: function() {
         return this;
     },
 });
 
-Template.user.events({
+Template.userShow.events({
 
 });
