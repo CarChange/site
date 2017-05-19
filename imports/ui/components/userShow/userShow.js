@@ -7,11 +7,29 @@ Template.userShow.helpers({
     user: function() {
         return this;
     },
+    roles: function() {
+      return Meteor.roles.find({});
+    },
+});
+
+Template.role.helpers({
+  role: function() {
+    return this;
+  },
+  userIsInRole: function(user){
+    return Roles.userIsInRole(user._id,this.name);
+  }
 });
 
 Template.userShow.events({
-  "submit .form-roles": function(event, template){
+  "change .dropdownRoles": function(event, template){
     event.preventDefault();
-    
+    Meteor.call("users.changeRole", this._id, $(event.currentTarget).val(), function(error, result){
+      if(error){
+        console.log("error", error);
+      }
+      console.log('SUCESSO!');
+    });
+
   }
 });

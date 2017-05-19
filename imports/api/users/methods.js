@@ -43,10 +43,12 @@ Meteor.methods({
   'users.remove'() {
 
   },
-  'users.changeRole'(roles) {
-      if(Roles.userIsInRole(this.userId, role, Roles.GLOBAL_GROUP))
-        Roles.removeUsersFromRoles(this.userId, roles, Roles.GLOBAL_GROUP);
-      else
-        Roles.addUsersToRoles(this.userId, role, Roles.GLOBAL_GROUP);
+  'users.changeRole'(userId,role) {
+    var loggedInUser = Meteor.user()
+
+    if (!loggedInUser || !Roles.userIsInRole(loggedInUser,'admin')) {
+      throw new Meteor.Error(403, "Access denied")
+    }
+    Roles.setUserRoles(userId, role);
   }
 });
