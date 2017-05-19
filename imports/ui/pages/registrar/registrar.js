@@ -40,13 +40,21 @@ Template.registrar.events({
          }
          if(result){
             //se conseguir criar
-            swal("Sucesso!", "Registro realizado!");
+            // swal("Sucesso!", "Registro realizado!");
             //Router.go tem que estar dentro do callback de loginWithPassword
             Meteor.loginWithPassword(user.email, user.password, function(error) {
               if(error){
                 //pega msg de erros do loginWithPassword
                 swal(error.reason, error.details,'error');
               }
+              Meteor.call("sendVerificationLink", function(error, result){
+                  if(error){
+                      swal("error", error);
+                  }
+                  if(result){
+                      swal("Veja seu email!", "Um link de verificação foi enviado para seu email.");
+                  }
+              });
               Router.go('membros');
             });
          }

@@ -4,5 +4,5 @@ import { Meteor } from 'meteor/meteor';
 //mudar publish para situações
 
 Meteor.publish(null, function (){
-  return Meteor.roles.find({})
+  return Meteor.roles.find({});
 })
