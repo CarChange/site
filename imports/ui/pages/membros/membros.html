@@ -3,7 +3,7 @@
 {{#if authInProcess}}
   {{> loading}}
 {{else}}
-  {{#if isInRole 'user,admin'}}
+  {{#if isInRole 'user.viewer,user.client,user.vendor,partner,admin.cm,admin.super'}}
 
       <!-- Page Title -->
     <div class="section section-breadcrumbs">

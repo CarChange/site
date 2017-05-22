@@ -29,7 +29,7 @@ import '/imports/ui/pages/admUserDash/admUserDash.js';
 membrosController = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
-    if(!Roles.userIsInRole(Meteor.userId(),['user','admin'])){
+    if(!Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor','partner','admin.cm','admin.super'])){
       this.redirect('login');
     }
     this.next();

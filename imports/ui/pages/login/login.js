@@ -27,9 +27,9 @@ Template.login.events({
          swal("Erro","Email ou Senha incorretos!",'error');
        }else{
          swal("Sucesso","Você está logado!");
-         if(Roles.userIsInRole(Meteor.userId(),'user'))
+         if(Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor','partner']))
           Router.go('membros');
-         else if(Roles.userIsInRole(Meteor.userId(),'admin'))
+         else if(Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super']))
           Router.go('admhome');
        }
     });

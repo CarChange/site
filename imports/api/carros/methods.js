@@ -6,7 +6,7 @@ Meteor.methods({
   'carros.insert' (carro){
 
       //verifica se pedido vem de um admin
-      if(!Roles.userIsInRole(Meteor.userId(),'admin'))
+      if(!Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super']))
         throw new Meteor.Error('Não Autorizado');
 
         check(carro,{
@@ -26,13 +26,13 @@ Meteor.methods({
   },
   'carros.remove' (idCarro){
       //verifica se pedido vem de um admin
-      if(!Roles.userIsInRole(Meteor.userId(),'admin'))
+      if(!Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super']))
         throw new Meteor.Error('Não Autorizado');
 
       Carros.remove(idCarro);
   },
   'carros.update' (carro){
-      if(!Roles.userIsInRole(Meteor.userId(),'admin'))
+      if(!Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super']))
         throw new Meteor.Error('Não Autorizado');
 
         check(carro,{

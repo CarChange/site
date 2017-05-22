@@ -4,7 +4,7 @@ import { Users } from '../users.js';
 //Isso é um gato - MEOW
 if(Meteor.isServer){
       Meteor.publish('users', function usersPublication() {
-        if(Roles.userIsInRole(this.userId,'admin')){
+        if(Roles.userIsInRole(this.userId,'admin.super')){
             return Users.find({});
         }else {
           //Redirecionar para não autorizado
@@ -14,7 +14,7 @@ if(Meteor.isServer){
       });
 
       Meteor.publish('user', function userPublication() {
-        if(Roles.userIsInRole(this.userId,'user')){
+        if(Roles.userIsInRole(this.userId,['user.viewer','user.client','user.vendor','partner','admin.cm'])){
             return Users.findOne({_id: id },{fields : {profile:1}});
         }else {
           //Redirecionar para não autorizado

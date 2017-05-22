@@ -70,7 +70,7 @@ Meteor.methods({
   'users.changeRole'(userId,role) {
     var loggedInUser = Meteor.user()
 
-    if (!loggedInUser || !Roles.userIsInRole(loggedInUser,'admin')) {
+    if (!loggedInUser || !Roles.userIsInRole(loggedInUser,'admin.super')) {
       throw new Meteor.Error(403, "Access denied")
     }
     Roles.setUserRoles(userId, role);
