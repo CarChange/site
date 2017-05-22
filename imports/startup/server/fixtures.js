@@ -8,6 +8,7 @@ Meteor.startup(() => {
     Roles.createRole('admin.super');
     Roles.createRole('admin.cm');
     Roles.createRole('user.viewer');
+    Roles.createRole('user.vendor');
     Roles.createRole('user.client');
     Roles.createRole('partner');
 
