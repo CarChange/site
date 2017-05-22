@@ -17,7 +17,6 @@
     background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
 }
 
-
 .homeNavbar {
     font-size: 18px;
     padding: 30px 120px 0;
@@ -26,10 +25,10 @@
       padding-top: 0px;
     }
     //ajuste media para elementos não se sobreporem
-    @media(max-width:1207px) {
+    @media(max-width:1224px) {
       padding: 30px 0 0;
     }
-    @media(max-width:966px) {
+    @media(max-width:984px) {
       .navbar-header {
         float: none;
       }
@@ -91,4 +90,9 @@
 .navbar-brand {
  height: 70px;
  line-height: 50px;
+}
+
+//alinhar elementos navbar ao centro
+.navbar-inverse .navbar-nav > li > a {
+  text-align: center;
 }

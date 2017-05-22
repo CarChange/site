@@ -9,3 +9,86 @@ body{
  background: @body-background no-repeat top center fixed;
  background-size: cover;
 }
+
+/*--------------------------------------------------------------------------
+	Typography Style
+--------------------------------------------------------------------------*/
+
+html,
+body{
+	font-family: 'Lato', Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: @font-color;
+	height: 100%;
+	text-align: center;
+}
+
+h1{
+	color: @heading-color;
+	font-family: 'Raleway', sans-serif;
+	font-weight: lighter;
+	font-size: 64px;
+}
+
+h2{
+	color: @heading-color;
+	font-family: 'Lato', sans-serif;
+	font-weight: lighter;
+	font-size: 2em;
+	border-bottom: 2px solid @heading-color;
+	line-height: 1.5em;
+	margin: 30px 0;
+	padding-left: 10px;
+}
+
+h3{
+	font-family: 'Lato', sans-serif;
+	color: @heading-color;
+	font-size: 1.5em;
+}
+
+h4{
+	font-family: 'Lato', sans-serif;
+	color: @heading-color;
+	margin-bottom: 10px;
+}
+
+a{
+	color: @theme-color;
+}
+
+a:hover{
+	color: darken(@theme-color, 90%);
+	background-color: fadeout(@light-theme-color, 70%);
+	font-weight: bolder;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+}
+
+
+/*--------------------------------------------------------------------------
+	Buttons Style
+--------------------------------------------------------------------------*/
+.btn-outline {
+    color: white;
+    border-color: white;
+    border: 1px solid;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        color: white;
+				color: #333;
+			  text-shadow: none; /* Prevent inheritence from `body` */
+			  background-color: #fff;
+			  border: 1px solid #fff;
+    }
+}
+
+.btn {
+    border-radius: 300px;
+    background-color: darken(@theme-color, 20%);
+}
