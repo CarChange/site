@@ -22,7 +22,7 @@ Accounts.emailTemplates.verifyEmail = {
       return "Ative sua conta agora!";
    },
    text(user, url) {
-      return `Olá, ${user}! Verifique seu email ao clicar neste link:\n\n ${url}`;
+      return `Olá, ${user.profile.nome.primeiro}! Verifique seu email ao clicar neste link:\n\n ${url}`;
    }
 };
 
