@@ -4,6 +4,7 @@
     <form class="form-roles">
       <span>Nome: {{user.profile.nome.primeiro}} {{user.profile.nome.ultimo}}</span><br>
       <span>Email: {{email}}</span><br>
+      <span>Função Atual: </span>
       <select id= "dropdownRoles" class="dropdownRoles pretoText" name="dropdownRoles" form="form-roles">
         {{#each roles}}
           {{> role}}
