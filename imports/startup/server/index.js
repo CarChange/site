@@ -8,4 +8,5 @@ if(Meteor.isServer){
       reCAPTCHA.config({
           privatekey: '6Lf6-R8UAAAAAFWJpW4OOPMLz3qCujboWIzHSIc5'
       });
+  });
 }
