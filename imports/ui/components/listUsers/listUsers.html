@@ -1,8 +1,15 @@
 <template name="listUsers">
   <input type="text" name="procuraUser" placeholder="Procure um usuário..." class="procuraListas pretoText">
   <ul class="ulListas">
-    {{#each users}}
-      {{> userShow}}
-    {{/each}}
+    {{#if searching}}
+      {{> loading}}
+    {{else}}
+      {{#each users}}
+        {{> userShow}}
+      {{else}}
+        <p class="alert alert-warning">Nenhum resultado para '{{query}}'.</p>
+      {{/each}}
+    {{/if}}
   </ul>
 </template>
+  

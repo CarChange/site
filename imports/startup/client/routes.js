@@ -99,7 +99,7 @@ Router.route("/admin/permissoes", {
     template: "admUserDash",
     controller: "membrosController",
     waitOn:function(){
-        return Meteor.subscribe('users');
+        //return Meteor.subscribe('users');
     },
 });
 

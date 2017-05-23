@@ -1,4 +1,5 @@
 <template name="userShow">
+  {{#if userIsNotSA}}
   <li>
     <form class="form-roles">
       <span>{{user.profile.nome.primeiro}} {{user.profile.nome.ultimo}}</span><br>
@@ -9,14 +10,17 @@
       </select>
     </form>
   </li>
+  {{/if}}
 </template>
 
 
 
 <template name="role">
-  {{#if userIsInRole ..}}
-    <option selected class="pretoText" value="{{role.name}}">{{role.name}}</option>
-  {{else}}
-    <option class="pretoText" value="{{role.name}}">{{role.name}}</option>
+  {{#if roleIsNotSA}}
+    {{#if userIsInRole ..}}
+      <option selected class="pretoText" value="{{role.name}}">{{role.name}}</option>
+    {{else}}
+      <option class="pretoText" value="{{role.name}}">{{role.name}}</option>
+    {{/if}}
   {{/if}}
 </template>

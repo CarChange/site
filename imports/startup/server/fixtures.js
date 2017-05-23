@@ -5,12 +5,14 @@ import { Pontos } from '../../api/pontos/pontos.js';
 
 Meteor.startup(() => {
     //cria todos os roles
-    /*Roles.createRole('admin.super');
-    Roles.createRole('admin.cm');
-    Roles.createRole('user.viewer');
-    Roles.createRole('user.vendor');
-    Roles.createRole('user.client');
-    Roles.createRole('partner');*/
+    if(!Roles.getAllRoles()){
+      Roles.createRole('admin.super');
+      Roles.createRole('admin.cm');
+      Roles.createRole('user.viewer');
+      Roles.createRole('user.vendor');
+      Roles.createRole('user.client');
+      Roles.createRole('partner');
+    }
 
 
 

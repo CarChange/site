@@ -10,6 +10,9 @@ Template.userShow.helpers({
     roles: function() {
       return Meteor.roles.find({});
     },
+    userIsNotSA: function() {
+      return !(this.roles[0] === 'admin.super');
+    },
 });
 
 Template.role.helpers({
@@ -18,7 +21,10 @@ Template.role.helpers({
   },
   userIsInRole: function(user){
     return Roles.userIsInRole(user._id,this.name);
-  }
+  },
+  roleIsNotSA: function(){
+    return !(this.name === 'admin.super');
+  },
 });
 
 Template.userShow.events({
