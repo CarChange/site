@@ -1482,7 +1482,7 @@ span.color-red{
 	color: #A0A0A0;
 	padding: 0 20px 10px 20px;
 	border-top: 4px solid @theme-color;
-	margin-top: 20px;
+	margin-top: 0px;
 	.box-shadow(~"0 -1px 12px rgba(0,0,0,0.4)");
 	position: relative;
   right: 0;
@@ -2503,6 +2503,11 @@ span.color-red{
     width: 100%;
 }
 
+.img-resize-small {
+	height: 20%;
+	width: 20%;
+}
+
 .navbar {
  padding: 18px 15px 18px 15px;
  min-height: 50px;
@@ -2544,7 +2549,7 @@ span.color-red{
 +	listcarro
 --------------------------------------------------------------------------*/
 
-.procuraCarro{
+.procuraListas{
 width: 100%; /* Full-width */
 font-size: 16px; /* Increase font-size */
 padding: 12px 20px 12px 40px; /* Add some padding */
@@ -2552,14 +2557,14 @@ border: 1px solid #ddd; /* Add a grey border */
 margin-bottom: 12px; /* Add some space below the input */
 }
 
-.ulCarro {
+.ulListas {
     /* Remove default list styling */
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.ulCarro li a {
+.ulListas li a {
     border: 1px solid #ddd; /* Add a border to all links */
     margin-top: -1px; /* Prevent double borders */
     background-color: #f6f6f6; /* Grey background color */
@@ -2570,12 +2575,12 @@ margin-bottom: 12px; /* Add some space below the input */
     display: block; /* Make it into a block element to fill the whole list */
 }
 
-.ulCarro li a.header {
+.ulListas li a.header {
     background-color: #e2e2e2; /* Add a darker background color for headers */
     cursor: default; /* Change cursor style */
 }
 
-.ulCarro li a:hover:not(.header) {
+.ulListas li a:hover:not(.header) {
     background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 

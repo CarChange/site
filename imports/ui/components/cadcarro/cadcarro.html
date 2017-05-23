@@ -1,25 +1,37 @@
 <template name="cadcarro">
 
-      <form class="form-cadcarro">
-        <h4>Marca</h4>
-        <input type="text" name="marca" class="pretoText" required>
-        <p>&nbsp;</p>
-        <h4>Modelo</h4>
-        <input type="text" name="modelo" class="pretoText" required>
-        <p>&nbsp;</p>
-        <h4>Valor Total</h4>
-        <input type="number" name="valorTotal" step="0.01" min="0.00" max="9999999.00" class="pretoText" required>
-        <p>&nbsp;</p>
-        <h4>Valor da Parcela</h4>
-        <input type="number" name="valorParc" step="0.01" min="0.00" max="9999999.00" class="pretoText" required>
-        <p>&nbsp;</p>
-        <h4>Número de Parcelas</h4>
-        <input type="number" name="numParc" min="1" max="80" class="pretoText" required>
-        <p>&nbsp;</p>
-        <h4>Categoria</h4>
-        <p><input type="radio" name="categoria" value="integral" checked> Integral &nbsp;&nbsp;&nbsp;
-        <input type="radio" name="categoria" value="75%"> 75%</p><br>&nbsp;
-        <input type="submit" value="Enviar carro" class="pretoText">
-      </form>
+<div class="basic-login">
+  <form role="form" class="form-cadcarro">
+    <div class="form-group">
+          <label for="marca"><b>Marca</b></label>
+      <input name="marca" class="form-control" type="text" placeholder="Ex.: Ford" required>
+    </div>
+    <div class="form-group">
+          <label for="modelo"><b>Modelo</b></label>
+      <input name="modelo" class="form-control" type="text" placeholder="Ex.: Fiesta 1.6 8v" required>
+    </div>
+    <div class="form-group">
+          <label for="modelo"><b>Valor Total</b></label>
+      <input name="valorTotal" class="form-control" type="number" step="0.01" min="0.00" max="9999999.00" placeholder="Ex.: 26850.00" required>
+    </div>
+    <div class="form-group">
+          <label for="modelo"><b>Valor da Parcela</b></label>
+      <input name="valorParc" class="form-control" type="number" step="0.01" min="0.00" max="9999999.00" placeholder="Ex.: 783.25" required>
+    </div>
+    <div class="form-group">
+          <label for="modelo"><b>Número de Parcelas</b></label>
+      <input name="numParc" class="form-control" type="number" min="1" max="999" placeholder="Ex.: 58" required>
+    </div>
+    <div class="form-group">
+      <label class="checkbox"><b>Categoria</b><br>
+        <input type="radio" name="categoria" value="integral" checked> Integral &nbsp;&nbsp;&nbsp;
+        <input type="radio" name="categoria" value="75%"> 75%
+      </label>
+      <br>
+      <button type="submit" class="btn" value="Enviar carro">Enviar carro</button>
+      <div class="clearfix"></div>
+    </div>
+  </form>
+</div>
 
 </template>

@@ -4,7 +4,7 @@
   <a href="/mostraCarro/{{_id}}" class="textoCarro"><strong>{{marca}} {{modelo}}</strong>,
     com parcela no valor de <strong>{{valorParc}} reais</strong> ({{categoria}})</a>
 </li>
-{{#if isInRole 'admin'}}
+{{#if isInRole 'admin.cm,admin.super'}}
     <button class="remove pretoText" type="submit">Remover consórcio</button>
     <button class="editar pretoText" type="submit">Editar consórcio</button>
 {{/if}}

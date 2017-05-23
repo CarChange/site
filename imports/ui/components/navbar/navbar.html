@@ -15,25 +15,28 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      {{#if isInRole 'admin'}}
+      {{#if isInRole 'admin.cm,admin.super'}}
       <ul class="nav navbar-nav">
         <li><a href="{{pathFor route='cadastroConsorcio'}}">Cadastrar Consórcios</a></li>
       </ul>
+      {{/if}}
+      {{#if isInRole 'admin.super'}}
       <ul class="nav navbar-nav">
         <li><a href="{{pathFor route='admUserDash'}}">Administrar Permissões</a></li>
       </ul>
       {{/if}}
-      {{#if isInRole 'user'}}
+      {{#if isInRole 'user.viewer,user.client,user.vendor'}}
       <ul class="nav navbar-nav">
         <li><a href="{{pathFor route='membros'}}">Área de Membros</a></li>
+        <li><a href="{{pathFor route='consorcio'}}">Consórcio</a></li>
       </ul>
+      {{/if}}
+      {{#if currentUser}}
       <ul class="nav navbar-nav navbar-right">
         <li class="navbar-right"><a href="{{pathFor route='loja'}}"><i class="glyphicon glyphicon-shopping-cart icon-white"></i>&nbsp; Loja</a></li>
         <li role="separator" class="divider"></li>
         <li class="maisBaixo2"><p>Bem vindo, {{currentUser.profile.nome.primeiro}}!</p></li>
       </ul>
-      {{/if}}
-      {{#if currentUser}}
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" class="logout">Logout</a></li>
       </ul>

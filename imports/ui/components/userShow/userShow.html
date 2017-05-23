@@ -1,10 +1,22 @@
 <template name="userShow">
   <li>
-    <span>{{user.profile.nome.primeiro}}</span><br>
-    <select class="dropdownRoles" name="dropdownRoles" form="form-roles">
-      <option class="pretoText" value="admin">admin</option>
-      <option class="pretoText" value="user">user</option>
-    </select>
-    <button class="pretoText" type="submit">Atualizar</button>
+    <form class="form-roles">
+      <span>{{user.profile.nome.primeiro}} {{user.profile.nome.ultimo}}</span><br>
+      <select id= "dropdownRoles" class="dropdownRoles pretoText" name="dropdownRoles" form="form-roles">
+        {{#each roles}}
+          {{> role}}
+        {{/each}}
+      </select>
+    </form>
   </li>
+</template>
+
+
+
+<template name="role">
+  {{#if userIsInRole ..}}
+    <option selected class="pretoText" value="{{role.name}}">{{role.name}}</option>
+  {{else}}
+    <option class="pretoText" value="{{role.name}}">{{role.name}}</option>
+  {{/if}}
 </template>

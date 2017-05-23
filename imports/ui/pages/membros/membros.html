@@ -1,9 +1,10 @@
 <template name="membros">
+  <header class="corUp">
 {{#if authInProcess}}
   {{> loading}}
 {{else}}
-  {{#if isInRole 'user,admin'}}
-    <header class="corUp">
+  {{#if isInRole 'user.viewer,user.client,user.vendor,partner,admin.cm,admin.super'}}
+
       <!-- Page Title -->
     <div class="section section-breadcrumbs">
     <div class="container">
@@ -36,8 +37,9 @@
 
       <div class="row">
         <div class="col-md-6 memberBox">
-
-
+          <h2>Meu Consórcio</h2>
+          <p>Você ainda não adquiriu um Consórcio.</p>
+          <a href="#"><em>Clique aqui para adquirir</em></a>
         </div>
 
         <div class="col-md-6 memberBox">
@@ -54,11 +56,12 @@
       </div>
 
     </div>
-    </header>
+
     {{else}}
-      <p>Você não tem autorização para ver essa página</p>
+      <p>Você não tem autorização para ver essa página.</p>
       <!-- <p>Por favor <a href="/login">faça seu login</a> para ver essa página.</p> -->
     {{/if}}
 {{/if}}
 
+  </header>
 </template>

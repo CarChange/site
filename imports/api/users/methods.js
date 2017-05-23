@@ -48,7 +48,7 @@ Meteor.methods({
 
     if (!userExists) {
       const userId = Accounts.createUser(user);
-      Roles.addUsersToRoles(userId, 'user');
+      Roles.addUsersToRoles(userId, 'user.viewer');
       console.log("Usuário registrado (" + user.email + ")");
       return true;
     }else{
@@ -66,12 +66,16 @@ Meteor.methods({
   'users.remove'() {
 
   },
-  'users.changeRole'(roles) {
-      if(Roles.userIsInRole(this.userId, role, Roles.GLOBAL_GROUP))
-        Roles.removeUsersFromRoles(this.userId, roles, Roles.GLOBAL_GROUP);
-      else
-        Roles.addUsersToRoles(this.userId, role, Roles.GLOBAL_GROUP);
+
+  'users.changeRole'(userId,role) {
+    var loggedInUser = Meteor.user()
+
+    if (!loggedInUser || !Roles.userIsInRole(loggedInUser,'admin.super')) {
+      throw new Meteor.Error(403, "Access denied")
+    }
+    Roles.setUserRoles(userId, role);
   },
+
   'sendVerificationLink'() {
       let userId = Meteor.userId();
       if ( userId )
@@ -79,5 +83,5 @@ Meteor.methods({
       else
         throw new Meteor.Error(25, 'Não foi possível enviar o email de verificação.', "Verifique se o usuário está logado.");
 
-  }
+  },
 });
