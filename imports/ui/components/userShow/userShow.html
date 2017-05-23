@@ -2,7 +2,8 @@
   {{#if userIsNotSA}}
   <li>
     <form class="form-roles">
-      <span>{{user.profile.nome.primeiro}} {{user.profile.nome.ultimo}}</span><br>
+      <span>Nome: {{user.profile.nome.primeiro}} {{user.profile.nome.ultimo}}</span><br>
+      <span>Email: {{email}}</span><br>
       <select id= "dropdownRoles" class="dropdownRoles pretoText" name="dropdownRoles" form="form-roles">
         {{#each roles}}
           {{> role}}

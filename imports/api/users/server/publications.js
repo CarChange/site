@@ -9,16 +9,20 @@ if(Meteor.isServer){
           check( search, Match.OneOf( String, null, undefined ) );
 
           let query      = {};
-          let projection = { limit: 5, sort: {"profile.nome.primeiro" : 1}};
+          let projection = { limit: 10, sort: {"profile.nome.primeiro" : 1}};
 
           if ( search ) {
             //JavaScript regular expression - não distingue cases
             let regex = new RegExp( search, 'i' );
 
             query = {
-              "profile.nome.primeiro": regex
+              $or: [
+                {"profile.nome.primeiro": regex},
+                {"profile.nome.ultimo": regex},
+                {"emails.0.address": regex}
+              ]
             };
-            projection.limit = 5;
+            projection.limit = 10;
           }
           return Users.find(query,projection);
         }else {

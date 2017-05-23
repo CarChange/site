@@ -7,6 +7,9 @@ Template.userShow.helpers({
     user: function() {
         return this;
     },
+    email: function() {
+      return this.emails[0].address;
+    },
     roles: function() {
       return Meteor.roles.find({});
     },
