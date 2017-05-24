@@ -8,7 +8,23 @@ if(Meteor.isServer){
       reCAPTCHA.config({
           privatekey: '6Lf6-R8UAAAAAFWJpW4OOPMLz3qCujboWIzHSIc5'
       });
-
-      process.env.MAIL_URL = "smtps://naoresponda%40carchange.com.br:57LciaThWWgp@smtp.zoho.com:465";
   });
+
+    //Teste para tentar fazer a verificação de email:
+    (function () {
+        "use strict";
+
+        Accounts.urls.resetPassword = function (token) {
+            return Meteor.absoluteUrl('reset-password/' + token);
+        };
+
+        Accounts.urls.verifyEmail = function (token) {
+            return Meteor.absoluteUrl('verify-email/' + token);
+        };
+
+        Accounts.urls.enrollAccount = function (token) {
+            return Meteor.absoluteUrl('enroll-account/' + token);
+        };
+
+    })();
 }
