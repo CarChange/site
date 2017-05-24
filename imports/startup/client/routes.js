@@ -26,15 +26,38 @@ import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 import '/imports/ui/pages/email/email.js';
 import '/imports/ui/pages/admUserDash/admUserDash.js';
 
-membrosController = RouteController.extend({
+permissaoUsers = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
-    if(!Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor','partner','admin.cm','admin.super'])){
+    if(!Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor'])){
       this.redirect('login');
     }
     this.next();
   }
 });
+
+permissaoAdmin = RouteController.extend({
+  onBeforeAction: function () {
+    // do some login checks or other custom logic
+    if(!Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super'])){
+      this.redirect('login');
+    }
+    this.next();
+  }
+});
+
+permissaoPartner = RouteController.extend({
+  onBeforeAction: function () {
+    // do some login checks or other custom logic
+    if(!Roles.userIsInRole(Meteor.userId(),'partner')){
+      this.redirect('login');
+    }
+    this.next();
+  }
+});
+
+
+
 
 // Set up fixed Layout
 Router.configure({
@@ -64,13 +87,12 @@ Router.route("/planos");
 Router.route("/membros", {
   name:"membros",
   template:"membros",
-  controller: "membrosController",
+  controller: "permissaoUsers",
 });
 
 Router.route("/loja/consorcio", {
   name:"consorcio",
   template:"consorcio",
-  controller: "membrosController",
   waitOn:function(){
     return Meteor.subscribe('carros');
   },
@@ -81,7 +103,7 @@ Router.route("/loja/consorcio", {
 Router.route("/admin/cadastroConsorcio", {
   name:"cadastroConsorcio",
   template:"cadastroConsorcio",
-  controller: "membrosController",
+  controller: "permissaoAdmin",
   waitOn:function(){
     return Meteor.subscribe('carros');
   },
@@ -97,10 +119,7 @@ Router.route("/pontoVirtual", {
 Router.route("/admin/permissoes", {
     name: "admUserDash",
     template: "admUserDash",
-    controller: "membrosController",
-    waitOn:function(){
-        //return Meteor.subscribe('users');
-    },
+    controller: "permissaoAdmin",
 });
 
 // Router.route("/admhomeass",
@@ -118,7 +137,7 @@ Router.route("/admin/permissoes", {
  Router.route("/admin",{
  name: "admhome",
  template: "admhome",
- controller: "membrosController",
+ controller: "permissaoAdmin",
  });
 //
 // Router.route("/admconsass",

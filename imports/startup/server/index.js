@@ -9,6 +9,5 @@ if(Meteor.isServer){
           privatekey: '6Lf6-R8UAAAAAFWJpW4OOPMLz3qCujboWIzHSIc5'
       });
 
-      process.env.MAIL_URL = "smtps://naoresponda%40carchange.com.br:57LciaThWWgp@smtp.zoho.com:465";
   });
 }
