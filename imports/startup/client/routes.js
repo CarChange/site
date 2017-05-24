@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 
 // Import needed templates
 import '/imports/ui/layouts/index/index.js';
-import '/imports/ui/layouts/adm/adm.js';
 //import '/imports/ui/pages/carrinho/carrinho.js';
 import '/imports/ui/pages/home/home.js';
 import '/imports/ui/pages/loading/loading.js';
