@@ -1,37 +1,42 @@
 <template name="pagamento">
-    <form class="pagamento" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
-        <!-- Campos obrigatórios -->
-        <input name="receiverEmail" type="hidden" value="consorcio.carchange@gmail.com">
-        <input name="currency" type="hidden" value="BRL">
+    {{#unless currentUser.emails.[0].verified}}
+        <p class="alert alert-warning">You need to verify your email address before using GoDunk.
+        <a href="#" class="resendVerificationLink">Resend verification link</a>.</p>
+    {{else}}
+        <form class="pagamento" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
+            <!-- Campos obrigatórios -->
+            <input name="receiverEmail" type="hidden" value="consorcio.carchange@gmail.com">
+            <input name="currency" type="hidden" value="BRL">
 
-        <!-- Itens do pagamento (ao menos um item é obrigatório) -->
-        <input name="itemId1" type="hidden" value="{{produto._id}}">
-        <input name="itemDescription1" type="hidden" value="{{descricao}}">
-        <input name="itemAmount1" type="hidden" value="{{produto.valorParc}}"> <!-- valor do item -->
-        <input name="itemQuantity1" type="hidden" value="1">
-        <!-- <input name="itemWeight1" type="hidden" value="1000"> -->
+            <!-- Itens do pagamento (ao menos um item é obrigatório) -->
+            <input name="itemId1" type="hidden" value="{{produto._id}}">
+            <input name="itemDescription1" type="hidden" value="{{descricao}}">
+            <input name="itemAmount1" type="hidden" value="{{produto.valorParc}}"> <!-- valor do item -->
+            <input name="itemQuantity1" type="hidden" value="1">
+            <!-- <input name="itemWeight1" type="hidden" value="1000"> -->
 
-        <!-- Código de referência do pagamento no seu sistema (opcional, IMPORTANTE) -->
-        <input name="reference" type="hidden" value="{{refId}}">
+            <!-- Código de referência do pagamento no seu sistema (opcional, IMPORTANTE) -->
+            <input name="reference" type="hidden" value="{{refId}}">
 
-        <!-- Informações de frete (opcionais) -->
-        <!-- <input name="shippingType" type="hidden" value="3">
-        <input name="shippingAddressPostalCode" type="hidden" value="01452002">
-        <input name="shippingAddressStreet" type="hidden" value="Av. Brig. Faria Lima">
-        <input name="shippingAddressNumber" type="hidden" value="1384">
-        <input name="shippingAddressComplement" type="hidden" value="5o andar">
-        <input name="shippingAddressDistrict" type="hidden" value="Jardim Paulistano">
-        <input name="shippingAddressCity" type="hidden" value="Sao Paulo">
-        <input name="shippingAddressState" type="hidden" value="SP">
-        <input name="shippingAddressCountry" type="hidden" value="BRA"> -->
+            <!-- Informações de frete (opcionais) -->
+            <!-- <input name="shippingType" type="hidden" value="3">
+            <input name="shippingAddressPostalCode" type="hidden" value="01452002">
+            <input name="shippingAddressStreet" type="hidden" value="Av. Brig. Faria Lima">
+            <input name="shippingAddressNumber" type="hidden" value="1384">
+            <input name="shippingAddressComplement" type="hidden" value="5o andar">
+            <input name="shippingAddressDistrict" type="hidden" value="Jardim Paulistano">
+            <input name="shippingAddressCity" type="hidden" value="Sao Paulo">
+            <input name="shippingAddressState" type="hidden" value="SP">
+            <input name="shippingAddressCountry" type="hidden" value="BRA"> -->
 
-        <!-- Dados do comprador (opcionais) -->
-        <input name="senderName" type="hidden" value="{{userNome}}">
-        <input name="senderAreaCode" type="hidden" value="{{telefone.ddd}}">
-        <input name="senderPhone" type="hidden" value="{{telefone.num}}">
-        <input name="senderEmail" type="hidden" value="{{userEmail}}">
+            <!-- Dados do comprador (opcionais) -->
+            <input name="senderName" type="hidden" value="{{userNome}}">
+            <input name="senderAreaCode" type="hidden" value="{{telefone.ddd}}">
+            <input name="senderPhone" type="hidden" value="{{telefone.num}}">
+            <input name="senderEmail" type="hidden" value="{{userEmail}}">
 
-        <!-- submit do form (obrigatório) -->
-        <input alt="Pague com PagSeguro" name="submit" class="pretoText" type="submit" value="Compre aqui!"/>
-    </form>
+            <!-- submit do form (obrigatório) -->
+            <input alt="Pague com PagSeguro" name="submit" class="pretoText" type="submit" value="Compre aqui!"/>
+        </form>
+    {{/unless}}
 </template>
