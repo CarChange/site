@@ -17,10 +17,7 @@ import '/imports/ui/pages/planos/planos.js';
 import '/imports/ui/pages/membros/membros.js';
 import '/imports/ui/pages/consorcio/consorcio.js'
 import '/imports/ui/pages/cadastroConsorcio/cadastroConsorcio.js'
-import '/imports/ui/pages/admconsass/admconsass.js';
 import '/imports/ui/pages/admhome/admhome.js';
-import '/imports/ui/pages/admhomeass/admhomeass.js';
-import '/imports/ui/pages/admhomeparc/admhomeparc.js';
 import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 import '/imports/ui/pages/email/email.js';
 import '/imports/ui/pages/admUserDash/admUserDash.js';
