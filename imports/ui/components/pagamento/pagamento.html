@@ -1,7 +1,7 @@
 <template name="pagamento">
     {{#unless currentUser.emails.[0].verified}}
-        <p class="alert alert-warning">You need to verify your email address before using GoDunk.
-        <a href="#" class="resendVerificationLink">Resend verification link</a>.</p>
+        <p class="alert alert-warning">Você precisa verificar seu email!
+        <a href="#" class="resendVerificationLink">Reenviar link de verificação</a>.</p>
     {{else}}
         <form class="pagamento" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
             <!-- Campos obrigatórios -->

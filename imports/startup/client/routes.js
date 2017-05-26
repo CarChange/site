@@ -147,7 +147,8 @@ AccountController = RouteController.extend({
     },
     verifyEmail: function () {
         Accounts.verifyEmail(this.params.token, function () {
-            Router.go('/');
+            console.log("Token de verificacao: " + this);
+            Router.go('/membros');
         });
         this.next();
     }
@@ -157,16 +158,19 @@ Router.map(function () {
     this.route('resetPassword', {
         controller: 'AccountController',
         path: '/reset-password/:token',
-        action: 'resetPassword'
+        action: 'resetPassword',
+        template: 'loading'
     });
     this.route('verifyEmail', {
         controller: 'AccountController',
         path: '/verify-email/:token',
-        action: 'verifyEmail'
+        action: 'verifyEmail',
+        template: 'loading'
     });
     this.route('enrollAccount', {
         controller: 'AccountController',
         path: '/enroll-account/:token',
-        action: 'resetPassword'
+        action: 'resetPassword',
+        template: 'loading'
     });
 });

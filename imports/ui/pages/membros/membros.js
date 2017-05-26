@@ -9,3 +9,17 @@ Template.membros.helpers({
       return Meteor.loggingIn();
     }
 });
+
+Template.membros.events({
+    'click .resendVerificationLink' ( event, template ) {
+        console.log("reenviando link");
+        Meteor.call( 'sendVerificationLink', ( error, response ) => {
+            if ( error ) {
+                swal( error.reason, 'Opa! ' );
+            } else {
+                let email = Meteor.user().emails[ 0 ].address;
+                swal( `Link de verificação enviado para ${ email }!`, 'success' );
+            }
+        });
+    }
+});

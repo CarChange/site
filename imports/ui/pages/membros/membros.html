@@ -32,6 +32,9 @@
           <p>Você se cadastrou em {{dataCadastro}}.</p>
           <p>Restam X meses de clube.</p>
           <a href="#"><em>Alterar pagamento</em></a>
+          {{#unless currentUser.emails.[0].verified}}
+            <p>Você ainda não verificou sua conta. <a href="#" class="resendVerificationLink">Verifique agora</a>.</P>
+          {{/unless}}
         </div>
       </div>
 
