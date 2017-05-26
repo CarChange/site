@@ -56,8 +56,8 @@ Meteor.methods({
         else
             throw new Meteor.Error(25, 'Não foi possível enviar o email de verificação.', "Verifique se o usuário está logado.");
     },
-    'resetPassword'() {
-        let userId = Meteor.userId();
+    'resetUserPassword'(userEmail) {
+        let userId = Meteor.users.findOne({'emails.address':userEmail})._id;
         if ( userId ){
             return Accounts.sendResetPasswordEmail( userId );
         }
