@@ -27,10 +27,11 @@
 								<input name="senha" class="form-control" id="login-password" type="password" placeholder="" required>
 							</div>
 							<div class="form-group">
-								<label class="checkbox">
-									<input type="checkbox"> Remember me
-								</label>
-								<a href="page-password-reset.html" class="forgot-password">Forgot password?</a>
+								<!-- <label class="checkbox">
+									<input type="checkbox"> Mantenha-me conectado
+								</label> -->
+								<a href="page-password-reset.html" class="forgot-password">Esqueceu a senha?</a><br>
+								Não tem conta?<a href="{{pathFor route = 'registrar'}}">Registre-se</a><br>
 								<button type="submit" class="btn pull-right">Login</button>
 								<div class="clearfix"></div>
 							</div>
