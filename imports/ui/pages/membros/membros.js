@@ -12,7 +12,6 @@ Template.membros.helpers({
 
 Template.membros.events({
     'click .resendVerificationLink' ( event, template ) {
-        console.log("reenviando link");
         Meteor.call( 'sendVerificationLink', ( error, response ) => {
             if ( error ) {
                 swal( error.reason, 'Opa! ' );

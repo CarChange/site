@@ -43,7 +43,6 @@ Template.pagamento.helpers({
 
 Template.pagamento.events({
     'click .resendVerificationLink' ( event, template ) {
-        console.log("reenviando link");
         Meteor.call( 'sendVerificationLink', ( error, response ) => {
             if ( error ) {
                 swal( error.reason, 'Opa!' );

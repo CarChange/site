@@ -41,7 +41,6 @@ Meteor.methods({
     'sendVerificationLink'() {
         let userId = Meteor.userId();
         if ( userId ){
-            console.log("enviando");
             return Accounts.sendVerificationEmail( userId );
         }
         else
