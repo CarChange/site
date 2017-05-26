@@ -32,6 +32,22 @@ permissaoUsers = RouteController.extend({
   }
 });
 
+AccountController = RouteController.extend({
+    resetPassword: function () {
+        // NOTE: prompt below is very crude, but demonstrates the solution
+        Accounts.resetPassword(this.params.token, prompt('enter new password'), function () {
+            Router.go('/');
+        });
+        this.next();
+    },
+    verifyEmail: function () {
+        Accounts.verifyEmail(this.params.token, function () {
+            Router.go('/membros');
+        });
+        this.next();
+    }
+});
+
 permissaoAdmin = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
@@ -151,40 +167,23 @@ Router.route("/mostraCarro/:_id", {
 
 Router.route("email");
 
-//TODO Testar em deploy para ver se funciona.
-AccountController = RouteController.extend({
-    resetPassword: function () {
-        // NOTE: prompt below is very crude, but demonstrates the solution
-        Accounts.resetPassword(this.params.token, prompt('enter new password'), function () {
-            Router.go('/');
-        });
-        this.next();
-    },
-    verifyEmail: function () {
-        Accounts.verifyEmail(this.params.token, function () {
-            Router.go('/membros');
-        });
-        this.next();
-    }
+Router.route('resetPassword', {
+    controller: 'AccountController',
+    path: '/reset-password/:token',
+    action: 'resetPassword',
+    template: 'loading'
 });
 
-Router.map(function () {
-    this.route('resetPassword', {
-        controller: 'AccountController',
-        path: '/reset-password/:token',
-        action: 'resetPassword',
-        template: 'loading'
-    });
-    this.route('verifyEmail', {
-        controller: 'AccountController',
-        path: '/verify-email/:token',
-        action: 'verifyEmail',
-        template: 'loading'
-    });
-    this.route('enrollAccount', {
-        controller: 'AccountController',
-        path: '/enroll-account/:token',
-        action: 'resetPassword',
-        template: 'loading'
-    });
+Router.route('verifyEmail', {
+    controller: 'AccountController',
+    path: '/verify-email/:token',
+    action: 'verifyEmail',
+    template: 'loading'
+});
+
+Router.route('enrollAccount', {
+    controller: 'AccountController',
+    path: '/enroll-account/:token',
+    action: 'resetPassword',
+    template: 'loading'
 });
