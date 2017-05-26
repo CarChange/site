@@ -5,26 +5,36 @@ Accounts.emailTemplates.siteName = 'CarChange';
 Accounts.emailTemplates.from = 'CarChange <naoresponda@carchange.com.br>';
 
 Accounts.emailTemplates.enrollAccount.subject = (user) => {
-  return `Bem vindo à CarChange, ${user.profile.nome.primeiro}`;
+    return `Bem vindo à CarChange, ${user.profile.nome.primeiro}`;
 };
 
 Accounts.emailTemplates.enrollAccount.text = (user, url) => {
-  return 'Cadastro realizado com sucesso! Para ativar sua conta, clique no link abaixo: \n\n'
-    + url;
+    return 'Cadastro realizado com sucesso! Para ativar sua conta, clique no link abaixo: \n\n'
+        + url;
 };
 
-Accounts.emailTemplates.resetPassword.from = () => {
-  // Overrides the value set in `Accounts.emailTemplates.from` when resetting
-  // passwords.
-  return 'CarChange - Resetar Senha <naoresponda@carchange.com.br>';
-};
+// Accounts.emailTemplates.resetPassword.from = () => {
+//   // Overrides the value set in `Accounts.emailTemplates.from` when resetting
+//   // passwords.
+//   return 'CarChange - Resetar Senha <naoresponda@carchange.com.br>';
+// };
+
+Accounts.emailTemplates.resetPassword = {
+    subject() {
+        return "[CarChange] Resetar a senha";
+    },
+    text(user, url) {
+        return `Olá, ${user.profile.nome.primeiro}! Acesse o seguinte link para mudar sua senha:\n\n ${url}`
+        + "\n\nCaso você não tenha solicitado mudança de senha, ignore este email.";
+    }
+}
 
 Accounts.emailTemplates.verifyEmail = {
    subject() {
-      return "[CarChange] Ative sua conta agora!";
+        return "[CarChange] Ative sua conta agora!";
    },
    text(user, url) {
-      return `Olá, ${user.profile.nome.primeiro}! Verifique seu email ao clicar neste link:\n\n ${url}`;
+        return `Olá, ${user.profile.nome.primeiro}! Verifique seu email ao clicar neste link:\n\n ${url}`;
    }
 };
 
@@ -44,7 +54,14 @@ Meteor.methods({
             return Accounts.sendVerificationEmail( userId );
         }
         else
-          throw new Meteor.Error(25, 'Não foi possível enviar o email de verificação.', "Verifique se o usuário está logado.");
-
+            throw new Meteor.Error(25, 'Não foi possível enviar o email de verificação.', "Verifique se o usuário está logado.");
+    },
+    'resetPassword'() {
+        let userId = Meteor.userId();
+        if ( userId ){
+            return Accounts.sendResetPasswordEmail( userId );
+        }
+        else
+            throw new Meteor.Error(25, 'Não foi possível enviar o email de mudança de senha.', "Verifique se o usuário está logado.");
     }
 });
