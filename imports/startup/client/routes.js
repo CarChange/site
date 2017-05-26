@@ -165,7 +165,6 @@ AccountController = RouteController.extend({
     },
     verifyEmail: function () {
         Accounts.verifyEmail(this.params.token, function () {
-            console.log("Token de verificacao: " + this);
             Router.go('/membros');
         });
         this.next();
