@@ -1,5 +1,5 @@
 <template name="pagamento">
-    {{#unless currentUser.emails.[0].verified}}
+    {{#unless isInRole 'admin.cm,admin.super'}}
         <p class="alert alert-warning">Você precisa verificar seu email!
         <a href="#" class="resendVerificationLink">Reenviar link de verificação</a>.</p>
     {{else}}
