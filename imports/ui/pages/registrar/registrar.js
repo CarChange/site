@@ -6,8 +6,11 @@ import './registrar.html';
 
 Template.registrar.helpers({
   usuarioRef: function() {
-    console.log(Session.get('refUser'));
     return Session.get('refUser');
+  },
+  usuarioRefEmail: function() {
+    refUser = Session.get('refUser');
+    return refUser.emails[0].address;
   }
 });
 
