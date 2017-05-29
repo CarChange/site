@@ -1,7 +1,6 @@
 <template name="pagamento">
     {{#unless isInRole 'admin.cm,admin.super'}}
-        <p class="alert alert-warning">Você precisa verificar seu email!
-        <a href="#" class="resendVerificationLink">Reenviar link de verificação</a>.</p>
+        <p class="alert alert-warning">Quero comprar (estou no pagamento).</p>
     {{else}}
         <form class="pagamento" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
             <!-- Campos obrigatórios -->
