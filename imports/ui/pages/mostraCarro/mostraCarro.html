@@ -19,7 +19,16 @@
         <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
         </div>
       </div>
-      {{> pagamento carros}}
+      {{#if isInRole 'admin.cm,admin.super'}}
+        {{> pagamento carros}}
+      {{else}}
+        {{#unless currentUser.emails.[0].verified}}
+          <p class="alert alert-warning">Você precisa verificar seu email!
+          <a href="#" class="resendVerificationLink">Reenviar link de verificação</a>.</p>
+        {{else}}
+          <!-- {{> Quero Comprar }} -->
+        {{/unless}}
+      {{/if}}
     </div>
   </div>
 </section>

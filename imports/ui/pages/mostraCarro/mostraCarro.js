@@ -14,5 +14,14 @@ Template.mostraCarro.helpers({
 
 
 Template.mostraCarro.events({
-
+    'click .resendVerificationLink' ( event, template ) {
+        Meteor.call( 'sendVerificationLink', ( error, response ) => {
+            if ( error ) {
+                swal( error.reason, 'Opa!' );
+            } else {
+                let email = Meteor.user().emails[ 0 ].address;
+                swal( `Link de verificação enviado para ${ email }!`, 'success' );
+            }
+        });
+    },
 });
