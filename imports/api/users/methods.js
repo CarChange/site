@@ -52,4 +52,7 @@ Meteor.methods({
     }
     Roles.setUserRoles(userId, role);
   },
+  'users.findUserById' (userId){
+    return Users.findOne({"_id":userId});
+  }
 });

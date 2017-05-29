@@ -68,8 +68,6 @@ permissaoPartner = RouteController.extend({
 });
 
 
-
-
 // Set up fixed Layout
 Router.configure({
   layoutTemplate: 'transparente',
@@ -87,6 +85,16 @@ Router.route("/sobre");
 
 Router.route("/registrar");
 
+Router.route("/registrar/:_id", {
+  template: "registrar",
+  onBeforeAction: function () {
+    var refUser;
+    Meteor.call("users.findUserById", this.params._id,function(error, result){
+      Session.set('refUser',result);
+    });
+    this.next();
+  }
+})
 Router.route("/loja");
 
 Router.route("/login");
@@ -133,29 +141,11 @@ Router.route("/admin/permissoes", {
     controller: "permissaoAdmin",
 });
 
-// Router.route("/admhomeass",
-//   function () {
-//     this.layout('Adm_body');
-//     this.render('admhomeass');
-// });
-//
-// Router.route("/admhomeparc",
-//   function () {
-//     this.layout('Adm_body');
-//     this.render('admhomeparc');
-// });
-//
- Router.route("/admin",{
- name: "admhome",
- template: "admhome",
- controller: "permissaoAdmin",
- });
-//
-// Router.route("/admconsass",
-//   function () {
-//     this.layout('Adm_body');
-//     this.render('admconsass');
-// });
+Router.route("/admin",{
+  name: "admhome",
+  template: "admhome",
+  controller: "permissaoAdmin",
+});
 
 Router.route("/mostraCarro/:_id", {
   template:"mostraCarro",
@@ -165,8 +155,6 @@ Router.route("/mostraCarro/:_id", {
 });
 
 Router.route("email");
-
-Router.route("//:_id")
 
 Router.route('resetPassword', {
     controller: 'AccountController',

@@ -36,3 +36,4 @@ altapp:recaptcha
 ejson@1.0.13
 momentjs:moment
 email
+session

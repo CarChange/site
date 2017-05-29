@@ -4,6 +4,12 @@ import { Meteor } from 'meteor/meteor';
 import './registrar.html';
 
 
+Template.registrar.helpers({
+  usuarioRef: function() {
+    console.log(Session.get('refUser'));
+    return Session.get('refUser');
+  }
+});
 
 
 Template.registrar.events({
@@ -65,8 +71,6 @@ Template.registrar.events({
 
 
   },
-  "click .logout": function(event){
 
-  }
 
 });
