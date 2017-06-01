@@ -1,5 +1,7 @@
 <template name="registrar">
-Você está sendo registrado no nome de {{usuarioRef.profile.nome.primeiro}} {{usuarioRef.profile.nome.ultimo}}
+{{#if usuarioRef}}
+Seu padrinho é {{usuarioRef.profile.nome.primeiro}} {{usuarioRef.profile.nome.ultimo}}
+{{/if}}
 <header class="corUp">
 
   <div class="section section-breadcrumbs">
