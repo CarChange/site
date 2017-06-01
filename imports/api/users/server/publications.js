@@ -32,15 +32,8 @@ if(Meteor.isServer){
         }
       });
 
-      // Meteor.publish('user', function userPublication() {
-      //   if(this.userId){
-      //       console.log("entrou no findOne do user");
-      //       return Users.findOne({_id: id },{fields : {profile:1}});
-      //   }else {
-      //     //Redirecionar para não autorizado
-      //     this.stop();
-      //     return;
-      //   }
-      // });
+      Meteor.publish('singleUser' , function (userId) {
+            return Users.find({_id: userId },{fields : {profile:1}});
+      });
 
 }

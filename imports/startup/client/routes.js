@@ -67,6 +67,15 @@ permissaoPartner = RouteController.extend({
   }
 });
 
+permissaoLogged = RouteController.extend({
+  onBeforeAction: function () {
+    // do some login checks or other custom logic
+    if(Meteor.userId()){
+      Meteor.logout();
+    }
+    this.next();
+  }
+});
 
 // Set up fixed Layout
 Router.configure({
@@ -83,15 +92,18 @@ Router.route("/", {
 
 Router.route("/sobre");
 
-Router.route("/registrar");
+Router.route("/registrar",{
+  controller: 'permissaoLogged',
+});
 
 Router.route("/registrar/:_id", {
   template: "registrar",
+  waitOn: function () {
+    return Meteor.subscribe("singleUser", this.params._id);
+  },
   onBeforeAction: function () {
-    var refUser;
-    Meteor.call("users.findUserById", this.params._id,function(error, result){
-      Session.set('refUser',result);
-    });
+    if(Meteor.userId())
+      Meteor.logout();
     this.next();
   }
 })

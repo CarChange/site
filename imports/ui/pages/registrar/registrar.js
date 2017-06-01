@@ -6,12 +6,8 @@ import './registrar.html';
 
 Template.registrar.helpers({
   usuarioRef: function() {
-    return Session.get('refUser');
+    return Meteor.users.findOne();
   },
-  usuarioRefEmail: function() {
-    refUser = Session.get('refUser');
-    return refUser.emails[0].address;
-  }
 });
 
 
