@@ -54,5 +54,9 @@ Meteor.methods({
   },
   'users.findUserById' (userId){
     return Users.findOne({"_id":userId});
+  },
+  'users.registraPadrinho' (padrinhoId, indicadoId) {
+    Users.update({_id: indicadoId}, {$set: { 'profile.padrinho': padrinhoId }});
+    Users.update({_id: padrinhoId}, {$push: { 'profile.indicados': indicadoId }});
   }
 });

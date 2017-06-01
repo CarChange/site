@@ -20,6 +20,8 @@ Template.registrar.events({
      //valida confirma senha
      if(event.target.senha.value === event.target.senha2.value){
 
+       var padrinho = Meteor.users.findOne();
+
        //constrói objeto para enviar para servidor(call)
        const user = {
          email: event.target.email.value,
@@ -51,6 +53,10 @@ Template.registrar.events({
               if(error){
                 //pega msg de erros do loginWithPassword
                 swal(error.reason, error.details,'error');
+              }
+              if(padrinho) {
+                console.log("Tem um padrinho!");
+                Meteor.call("users.registraPadrinho", padrinho._id, Meteor.userId());
               }
               Meteor.call("sendVerificationLink", function(error, result){
                   if(error){
