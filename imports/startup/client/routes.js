@@ -25,9 +25,14 @@ permissaoUsers = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
     if(!Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor'])){
+      console.log('foi pro redirect');
       this.redirect('login');
+    }else{
+      console.log('next');
+      this.next();
     }
-    this.next();
+
+
   }
 });
 
@@ -50,31 +55,34 @@ AccountController = RouteController.extend({
 permissaoAdmin = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
-    if(!Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super'])){
-      this.redirect('login');
+    if(Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super'])){
+      this.next();
     }
-    this.next();
+    this.redirect('login');
   }
 });
 
 permissaoPartner = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
-    if(!Roles.userIsInRole(Meteor.userId(),'partner')){
-      this.redirect('login');
+    if(Roles.userIsInRole(Meteor.userId(),'partner')){
+      this.next();
     }
-    this.next();
+    this.redirect('login');
   }
 });
 
 permissaoLogged = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
-    if(Meteor.userId()){
-      Meteor.logout();
+    if (Tracker.currentComputation.firstRun) {
+        // called only once per route
+      if(Meteor.userId()){
+        Meteor.logout();
+      }
     }
     this.next();
-  }
+  },
 });
 
 // Set up fixed Layout
