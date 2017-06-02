@@ -25,10 +25,8 @@ permissaoUsers = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
     if(!Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor'])){
-      console.log('foi pro redirect');
       this.redirect('login');
     }else{
-      console.log('next');
       this.next();
     }
 
