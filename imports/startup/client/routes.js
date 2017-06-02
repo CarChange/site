@@ -57,8 +57,9 @@ permissaoAdmin = RouteController.extend({
     // do some login checks or other custom logic
     if(Roles.userIsInRole(Meteor.userId(),['admin.cm','admin.super'])){
       this.next();
+    }else{
+      this.redirect('login');
     }
-    this.redirect('login');
   }
 });
 
@@ -67,8 +68,9 @@ permissaoPartner = RouteController.extend({
     // do some login checks or other custom logic
     if(Roles.userIsInRole(Meteor.userId(),'partner')){
       this.next();
+    }else{
+      this.redirect('login');
     }
-    this.redirect('login');
   }
 });
 
