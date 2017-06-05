@@ -28,10 +28,11 @@ Template.registrar.events({
          password: event.target.senha.value,
          profile: {
              nome: {
-                 primeiro: event.target.nome.value,
-                 ultimo: event.target.sobrenome.value
+                primeiro: event.target.nome.value,
+                ultimo: event.target.sobrenome.value
              },
-             dataCadastro: new Date()
+             DDD: event.target.DDD.value,
+             celular: event.target.celular.value
          },
        }
 

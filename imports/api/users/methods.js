@@ -17,7 +17,12 @@ Meteor.methods({
     check(user, {
       email: String,
       password: String,
-      profile: { nome: { primeiro: String, ultimo: String }, dataCadastro: Date },
+      profile: {
+         nome: { primeiro: String, ultimo: String },
+         DDD: Number,
+         celular: Number,
+    },
+
     });
 
 
