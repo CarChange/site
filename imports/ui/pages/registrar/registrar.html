@@ -34,15 +34,22 @@ Seu padrinho é {{usuarioRef.profile.nome.primeiro}} {{usuarioRef.profile.nome.u
                               <label for="register-email"><i class="icon-user"></i> <b>Email</b></label>
                               <input name="email" class="form-control" id="registrar-email" type="email" placeholder="">
                           </div>
-                          <label for="register-telefone"><i class="icon-user"></i> <b>Celular</b></label>
+
                           <div class="form-group">
-                              <div class="col-md-3">
-                                <input type="Number" name="DDD" placeholder="DDD" class="form-control">
+                              <div class="col-md-12">
+                              <label for="register-telefone"><i class="icon-user"></i> <b>Celular</b></label>
                               </div>
-                              <div class="col-md-9">
-                                <input name="celular" class="form-control" id="registrar-telefone" type="Number" placeholder="Ex: 981232245">
+                              <div class="col-md-3 col-xs-3">
+                              <input class="form-control" type="Number" name="DDD" placeholder="DDD">
+                              </div>
+                              <div class="col-md-9 col-xs-9" style="padding-bottom: 18px;">
+                              <input class="form-control" name="celular" id="registrar-telefone" type="Number" placeholder="Ex: 981232245">
                               </div>
                           </div>
+
+                          <!--<div class="form-group">
+                              <input name="celular" id="registrar-telefone" type="Number" placeholder="Ex: 981232245">
+                          </div>-->
                           <div class="form-group">
                               <label for="register-password"><i class="icon-lock"></i> <b>Senha</b></label>
                               <input name="senha" class="form-control" id="registrar-password" type="password" placeholder="">
@@ -51,8 +58,10 @@ Seu padrinho é {{usuarioRef.profile.nome.primeiro}} {{usuarioRef.profile.nome.u
                               <label for="register-password2"><i class="icon-lock"></i> <b>Confirmar a senha</b></label>
                               <input name="senha2" class="form-control" id="registrar-password2" type="password" placeholder="">
                           </div>
-                          <div class="captchaPad">
+                          <div class="form-group">
+                            <div class="col-md-12" style="padding: 20px;">
                               {{> reCAPTCHA}}
+                            </div>
                           </div>
                           <div class="form-group">
                               <button type="submit" class="btn pull-right">Registrar</button>
