@@ -1,8 +1,8 @@
 <template name="pagamento">
-    {{#unless isInRole 'admin.cm,admin.super'}}
+    <!-- {{#unless isInRole 'admin.cm,admin.super'}}
         <p class="alert alert-warning">Quero comprar (estou no pagamento).</p>
-    {{else}}
-        <form class="pagamento" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
+    {{else}} -->
+        <form class="pagamento" target="pagseguro" action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
             <!-- Campos obrigatórios -->
             <input name="receiverEmail" type="hidden" value="consorcio.carchange@gmail.com">
             <input name="currency" type="hidden" value="BRL">
@@ -37,5 +37,5 @@
             <!-- submit do form (obrigatório) -->
             <input alt="Pague com PagSeguro" name="submit" class="pretoText" type="submit" value="Compre aqui!"/>
         </form>
-    {{/unless}}
+    <!-- {{/unless}} -->
 </template>

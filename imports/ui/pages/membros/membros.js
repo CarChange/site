@@ -1,5 +1,6 @@
 import './membros.html';
 import '/imports/ui/pages/loading/loading.js';
+import '/imports/ui/components/pagamento/pagamento.js'
 Template.membros.helpers({
     dataCadastro: function() {
         var data = Meteor.user().createdAt;
@@ -8,6 +9,13 @@ Template.membros.helpers({
     authInProcess: function() {
       return Meteor.loggingIn();
     },
+    produtoClube: function() {
+      var produto = {
+        _id : '123',
+        valorParc : parseFloat(180).toFixed(2),//verificar valor da parcela
+      }
+      return produto;
+    }
 });
 
 Template.membros.events({

@@ -19,8 +19,10 @@ Meteor.methods({
       password: String,
       profile: {
          nome: { primeiro: String, ultimo: String },
-         DDD: Number,
-         celular: Number,
+         celular:{
+           DDD: Number,
+           numero: Number
+         }
     },
 
     });

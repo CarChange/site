@@ -17,13 +17,13 @@ Template.pagamento.helpers({
     },
     telefone: function() {
         // TODO Adicionar telefone ao user
-        // if(Meteor.user().telefone) {
-        //     return {
-        //         ddd: Meteor.user().telefone.ddd,
-        //         num: Meteor.user().telefone.numero
-        //     }
-        // }
-        // else
+        if(Meteor.user().telefone) {
+            return {
+                ddd: Meteor.user().celular.ddd,
+                num: Meteor.user().celular.numero
+            }
+        }
+        else
         return {
             ddd: undefined,
             num: undefined
@@ -34,7 +34,11 @@ Template.pagamento.helpers({
         return this;
     },
     descricao: function() {
-        return this.marca + " " + this.modelo;
+        if (this.marca || this.modelo)
+          return this.marca + " " + this.modelo;
+        else {
+          return "Taxa anual do Clube CarChange";
+        }
     },
     refId: function() {
         return Meteor.user().emails[0].address;// + new Date().getTime(); // TODO pegar tempo do pagamento.

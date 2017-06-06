@@ -24,12 +24,13 @@ import '/imports/ui/pages/admUserDash/admUserDash.js';
 permissaoUsers = RouteController.extend({
   onBeforeAction: function () {
     // do some login checks or other custom logic
-    if(!Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor'])){
-      this.redirect('login');
-    }else{
-      this.next();
+    if(Meteor.user()){
+      if(!Roles.userIsInRole(Meteor.userId(),['user.viewer','user.client','user.vendor'])){
+        this.redirect('login');
+      }else{
+        this.next();
+      }
     }
-
 
   }
 });

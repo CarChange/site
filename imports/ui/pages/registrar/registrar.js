@@ -31,8 +31,10 @@ Template.registrar.events({
                 primeiro: event.target.nome.value,
                 ultimo: event.target.sobrenome.value
              },
-             DDD: event.target.DDD.value,
-             celular: event.target.celular.value
+             celular:{
+               DDD: parseInt(event.target.DDD.value),
+               numero: parseInt(event.target.celular.value)
+             }
          },
        }
 
