@@ -41,3 +41,5 @@ dynamic-import
 jaredmartin:future
 meteorhacks:npm
 peerlibrary:xml2js
+cfs:standard-packages
+cfs:filesystem

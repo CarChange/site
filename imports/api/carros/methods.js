@@ -16,6 +16,7 @@ Meteor.methods({
           valorTotal : String,
           valorParc : String,
           numParc : String,
+          imagem : String,
           creator : {
             createdAt : Date,
             adminId : String,
