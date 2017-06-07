@@ -10,4 +10,10 @@ if(Meteor.isServer){
       });
   });
 
+  Router.route('/pagamento/:token', function() {
+  this.response.writeHead(302, {
+    'Location': "https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code=" + this.params.token
+  });
+  this.response.end();
+  }, {where: 'server'});
 }
