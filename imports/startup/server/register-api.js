@@ -11,3 +11,5 @@ import '/imports/api/pagamentos/methods.js';
 import '/imports/api/pagamentos/server/publications.js';
 import '/imports/api/email/methods.js';
 import '/imports/api/roles/server/publications.js';
+import '/imports/api/images/images.js';
+import '/imports/api/images/server/publications.js';

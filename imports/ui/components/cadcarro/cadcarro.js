@@ -1,3 +1,5 @@
+import { Images } from '/imports/api/images/images.js';
+
 import './cadcarro.html';
 
 Template.cadcarro.events({
@@ -5,6 +7,12 @@ Template.cadcarro.events({
         event.preventDefault();
 
         var target = event.target;
+
+        var imagem = Images.insert(target.pic.files[0], function (err, fileObj) {
+          if(err)
+            console.log("erro: ");
+            console.log(err);
+        });
 
         // TODO Transformar carro em produto
         var novoCarro = {
@@ -14,6 +22,7 @@ Template.cadcarro.events({
             valorTotal: parseFloat(target.valorTotal.value).toFixed(2),
             valorParc: parseFloat(target.valorParc.value).toFixed(2),
             numParc: target.numParc.value,
+            imagem: imagem._id,
             creator: {
                 createdAt: new Date(),
                 adminId: Meteor.userId(),

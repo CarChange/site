@@ -38,3 +38,5 @@ momentjs:moment
 email@1.2.1
 session@1.1.7
 dynamic-import
+cfs:standard-packages
+cfs:filesystem
