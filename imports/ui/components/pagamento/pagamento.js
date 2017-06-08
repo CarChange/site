@@ -2,9 +2,6 @@ import './pagamento.html';
 import '/imports/ui/pages/loading/loading.js';
 Template.pagamento.helpers({
     // TODO pegar referências do produto e do cliente
-    // loading: function() {
-    //   return Template.instance().loading.get();
-    // },
     userEmail: function() {
         if(!Meteor.userId())
             return "faz_login.com";
@@ -45,9 +42,6 @@ Template.pagamento.helpers({
         return Meteor.user().emails[0].address;// + new Date().getTime(); // TODO pegar tempo do pagamento.
     }
 });
-Template.pagamento.onCreated( () => {
-  this.loading = new ReactiveVar(false);
-});
 
 Template.pagamento.events({
     'click .resendVerificationLink' ( event, template ) {
@@ -62,11 +56,8 @@ Template.pagamento.events({
     },
     "submit .pagamento": function(event, template){
         event.preventDefault();
-        //Inicializar a função com o e-mail e token
 
-        //Tela de loading
-        // console.log(this.loading);
-        // template.loading.set(true);
+
 
         //
         // var payment = {
@@ -87,13 +78,26 @@ Template.pagamento.events({
         // }
         // // console.log(this);
 
+
         Meteor.call("pagamentos.insert", function(err, res){
+          //Espera o future
           if(err)
-            console.log(err);
-          if (res)
-            Router.go("/pagamento/"+res);
+          console.log(err);
+          if (res)//espera o future voltar
+          Router.go("/pagamento/"+res);
+        });
+        swal('hello World');
+        swal({
+          title: "Redirecionando para o PagSeguro",
+          text: "Aguarde por favor...",
+          type: "info",
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true,
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          showConfirmButton: false,
         });
 
-        swal("PagSeguro", "Uma nova aba com os dados do pagamento foi aberta. Após a confirmação, entraremos em contato. Grato!");
+
     }
 });
