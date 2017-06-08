@@ -175,6 +175,16 @@ Router.route("/mostraCarro/:_id", {
   },
 });
 
+Router.route("/checkout", {
+  data:function(){
+    var query = this.params.query;
+    console.log(query);
+    return query;
+  },
+});
+
+
+
 Router.route("email");
 
 Router.route('resetPassword', {

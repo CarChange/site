@@ -16,4 +16,11 @@ if(Meteor.isServer){
   });
   this.response.end();
   }, {where: 'server'});
+
+  Router.route('/pagamento/listener', { where: 'server' })
+  .post(function () {
+    console.log(this);
+    this.response.end('Caught you\n');
+    //this.response.status(200).json({text:"Todo added"});
+});
 }

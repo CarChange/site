@@ -6,6 +6,7 @@ import { Pontos } from '../../api/pontos/pontos.js';
 Meteor.startup(() => {
     //cria todos os roles
     if(!Roles.getAllRoles()){
+      console.log("Criando roles...OK");
       Roles.createRole('admin.super');
       Roles.createRole('admin.cm');
       Roles.createRole('user.viewer');
