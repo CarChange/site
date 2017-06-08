@@ -4,26 +4,11 @@ import { check } from 'meteor/check';
 import pagseguro from 'pagseguro';
 
 Meteor.methods({
-    'pagamentos.insert': function(pagamento) {
+    'pagamentos.insertSub': function() {
 
         // if(Roles.userIsInRole(Meteor.userId(), 'user'))
         // if(Meteor.userId())
         //     throw new Meteor.error("Não Autorizado", "Precisa ser um usuário para realizar pagamentos. Verifique se está logado.");
-
-        // check(pagamento, {
-        //     refId: String,
-        //     data: Date,
-        //     userId: String,
-        //     efetuado: Boolean,
-        //     carrinho: {
-        //         // produto: {
-        //             produtoId: String,
-        //             descricao: Object,
-        //             valor: String,
-        //             quantidade: Number,
-        //         // }
-        //     }
-        // });
 
         var myFuture = new Future();
         var pagseguro = require('pagseguro'),
@@ -39,67 +24,48 @@ Meteor.methods({
 
         //Adicionando itens
         pag.addItem({
-            id: 1,
-            description: 'Descrição do primeiro produto',
-            amount: "4230.00",
-            quantity: 3,
-            weight: 2342
-        });
-
-        pag.addItem({
-            id: 2,
-            description: 'Esta é uma descrição',
-            amount: "5230.00",
-            quantity: 3,
-            weight: 2342
-        });
-
-        pag.addItem({
-            id: 3,
-            description: 'Descrição do último produto',
-            amount: "8230.00",
-            quantity: 3,
-            weight: 2342
+            id: 1, //id assinatura fixo
+            description: 'Anualidade do Clube CarChange', //fixo
+            amount: "180.00", //fixo
+            quantity: 1, //fixo
         });
 
         //Configurando as informações do comprador
         pag.buyer({
-            name: 'José Comprador',
-            email: 'comprador@uol.com.br',
-            phoneAreaCode: '51',
-            phoneNumber: '12345678'
+            name: Meteor.user().profile.nome.primeiro+' '+Meteor.user().profile.nome.ultimo,
+            email: Meteor.user().emails[0].address,
+            phoneAreaCode: Meteor.user().profile.celular.DDD,
+            phoneNumber: Meteor.user().profile.celular.numero,
         });
-
-        //Configurando a entrega do pedido
-
-        pag.shipping({
-            type: 1,
-            street: 'Rua Alameda dos Anjos',
-            number: '367',
-            complement: 'Apto 307',
-            district: 'Parque da Lagoa',
-            postalCode: '01452002',
-            city: 'São Paulo',
-            state: 'RS',
-            country: 'BRA'
-        });
+        console.log(Meteor.user().emails[0].address);
 
         //Configuranto URLs de retorno e de notificação (Opcional)
         //ver https://pagseguro.uol.com.br/v2/guia-de-integracao/finalizacao-do-pagamento.html#v2-item-redirecionando-o-comprador-para-uma-url-dinamica
         pag.setRedirectURL("https://www.carchange.com.br");
         //pag.setNotificationURL("http://www.lojamodelo.com.br/notificacao"); aprender notificações
         //Enviando o xml ao pagseguro
+
         pag.send(function(err, res) {
             if (err) {
+                console.log('ERRO NO SEND DO PAGSEGURO');
                 console.log(err);
                 myFuture.throw(err);
             }
+            console.log(res);
             var parser = new xml2js.Parser();
             parser.parseString(res, function(err, res) {
-              //console.log(res); se quiser ver a resposta no server
               myFuture.return(res.checkout.code[0]);
             })
         });
+        console.log(myFuture.wait());
+
+        var pagamento = {
+          userId: Meteor.userId(),
+          data: new Date(),
+          token: myFuture.wait(),
+        };
+        Pagamentos.insert(pagamento);
+
         return myFuture.wait();
     },
     'pagamentos.efetuar': function(pagamentoId) {
