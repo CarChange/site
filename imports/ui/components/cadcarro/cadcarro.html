@@ -27,7 +27,10 @@
         <input type="radio" name="categoria" value="integral" checked> Integral &nbsp;&nbsp;&nbsp;
         <input type="radio" name="categoria" value="75%"> 75%
       </label>
-      <input type="file" name="pic" accept="image/*">
+      <div class="form-group">
+            <label for="modelo"><b>URL da imagem</b></label>
+        <input name="imageUrl" class="form-control" type="url" placeholder="Ex.: https://i.giphy.com/weQG1zCbffpew.gif" required>
+      </div>
       <br>
       <button type="submit" class="btn" value="Enviar carro">Enviar carro</button>
       <div class="clearfix"></div>
