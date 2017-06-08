@@ -1,6 +1,7 @@
 import './membros.html';
 import '/imports/ui/pages/loading/loading.js';
-import '/imports/ui/components/pagamento/pagamento.js'
+import '/imports/ui/components/pagamento/pagamento.js';
+
 Template.membros.helpers({
     dataCadastro: function() {
         var data = Meteor.user().createdAt;
@@ -25,7 +26,10 @@ Template.membros.events({
                 swal( error.reason, 'Opa! Email não enviado.' );
             } else {
                 let email = Meteor.user().emails[ 0 ].address;
-                swal( `Link de verificação enviado para ${ email }!`, 'success' );
+                swal({
+                  text: `Link de verificação enviado para ${ email }!`,
+                  type: 'success'
+                });
             }
         });
     },
