@@ -57,29 +57,7 @@ Template.pagamento.events({
     "submit .pagamento": function(event, template){
         event.preventDefault();
 
-
-
-        //
-        // var payment = {
-        //     refId: Meteor.user().emails[0].address, // TODO Mudar URGENTEMENTE o ref ID
-        //     data: new Date(),
-        //     userId: Meteor.userId(),
-        //     efetuado: false,
-        //     carrinho: {
-        //         produtoId: this._id,
-        //         descricao: { // TODO Mudar para desc do produto
-        //             marca: this.marca,
-        //             modelo: this.modelo,
-        //             categoria: this.categoria
-        //         },
-        //         valor: this.valorParc,
-        //         quantidade: 1 // TODO Mudar para ser programático
-        //     }
-        // }
-        // // console.log(this);
-
-
-        Meteor.call("pagamentos.insertSub", function(err, res){
+        Meteor.call("pagamentos.buySub", function(err, res){
           //Espera o future
           if(err)
           console.log(err);

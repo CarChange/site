@@ -23,7 +23,7 @@ Meteor.methods({
            DDD: Number,
            numero: Number
          }
-    },
+      },
 
     });
 

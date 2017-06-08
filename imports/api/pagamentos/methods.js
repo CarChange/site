@@ -4,7 +4,7 @@ import { check } from 'meteor/check';
 import pagseguro from 'pagseguro';
 
 Meteor.methods({
-    'pagamentos.insertSub': function() {
+    'pagamentos.buySub': function() {
 
         // if(Roles.userIsInRole(Meteor.userId(), 'user'))
         // if(Meteor.userId())
@@ -20,7 +20,7 @@ Meteor.methods({
 
         //Configurando a moeda e a referência do pedido
         pag.currency('BRL');
-        pag.reference('12345');
+        pag.reference(Meteor.userId());
 
         //Adicionando itens
         pag.addItem({
@@ -37,13 +37,12 @@ Meteor.methods({
             phoneAreaCode: Meteor.user().profile.celular.DDD,
             phoneNumber: Meteor.user().profile.celular.numero,
         });
-        console.log(Meteor.user().emails[0].address);
 
         //Configuranto URLs de retorno e de notificação (Opcional)
         //ver https://pagseguro.uol.com.br/v2/guia-de-integracao/finalizacao-do-pagamento.html#v2-item-redirecionando-o-comprador-para-uma-url-dinamica
         pag.setRedirectURL("https://www.carchange.com.br");
         //pag.setNotificationURL("http://www.lojamodelo.com.br/notificacao"); aprender notificações
-        //Enviando o xml ao pagseguro
+
 
         pag.send(function(err, res) {
             if (err) {
@@ -57,34 +56,22 @@ Meteor.methods({
               myFuture.return(res.checkout.code[0]);
             })
         });
-        console.log(myFuture.wait());
 
-        var pagamento = {
-          userId: Meteor.userId(),
-          data: new Date(),
-          token: myFuture.wait(),
-        };
-        Pagamentos.insert(pagamento);
+        // var pagamento = {
+        //   userId: Meteor.userId(),
+        //   data: new Date(),
+        // };
+        //
+        // Pagamentos.insert(pagamento);
 
-        return myFuture.wait();
+        return myFuture.wait(); //espera o retorno do xml completo
     },
-    'pagamentos.efetuar': function(pagamentoId) {
-
-        check(pagamento, {
-            refId: String,
-            data: Date,
-            userId: String,
-            efetuado: Boolean,
-            carrinho: {
-                // produto: {
-                    produtoId: String,
-                    descricao: Object,
-                    valor: String,
-                    quantidade: Number,
-                // }
-            }
+    'pagamentos.buyCar': function(carro) {
+        check(carro, {
+          id: String,
+          description: String,
+          amount: Number,
         });
 
-        Pagamentos.update({_id:pagamentoId}, {$set:{ efetuado: true }});
     }
 });
