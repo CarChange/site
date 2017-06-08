@@ -80,7 +80,7 @@ Template.pagamento.events({
         // // console.log(this);
 
 
-        Meteor.call("pagamentos.insert", function(err, res){
+        Meteor.call("pagamentos.insertSub", function(err, res){
           //Espera o future
           if(err)
           console.log(err);
