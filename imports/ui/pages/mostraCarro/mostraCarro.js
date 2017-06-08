@@ -1,25 +1,25 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Carros } from '/imports/api/carros/carros.js';
-import { Images } from '/imports/api/images/images.js';
+// import { Images } from '/imports/api/images/images.js';
 
 import './mostraCarro.html';
 import '/imports/ui/components/pagamento/pagamento.js';
 
 
-Template.mostraCarro.onCreated(function () {
-  var carro = Carros.findOne({});
-  this.subscribe("image", carro.imagem);
-});
+// Template.mostraCarro.onCreated(function () {
+//   var carro = Carros.findOne({});
+//   this.subscribe("image", carro.imagem);
+// });
 
 
 Template.mostraCarro.helpers({
   carros() {
       return Carros.findOne({});
   },
-  imagem() {
-    return Images.findOne({});
-  }
+  // imagem() {
+  //   return Images.findOne({});
+  // }
 });
 
 

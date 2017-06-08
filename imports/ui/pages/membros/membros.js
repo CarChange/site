@@ -43,5 +43,28 @@ Template.membros.events({
                 swal( `Link de mudança de senha enviado para ${ email }!`, 'success' );
             }
         });
+    },
+    "click .pagamento": function(event, template){
+        event.preventDefault();
+
+        Meteor.call("pagamentos.buySub", function(err, res){
+          //Espera o future
+          if(err)
+          console.log(err);
+          if (res)//espera o future voltar
+          Router.go("/pagamento/"+res);
+        });
+
+        swal({
+          title: "Redirecionando para o PagSeguro",
+          text: "Aguarde por favor...",
+          imageUrl: "../img/bx_loader.gif",
+          imageClass: "img-resize-small",
+          // closeOnConfirm: false,
+          // showLoaderOnConfirm: true,
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          showConfirmButton: false,
+        });
     }
 });
