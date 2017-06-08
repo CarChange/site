@@ -1,5 +1,6 @@
 import './pagamento.html';
 import '/imports/ui/pages/loading/loading.js';
+
 Template.pagamento.helpers({
     // TODO pegar referências do produto e do cliente
     userEmail: function() {
@@ -64,13 +65,14 @@ Template.pagamento.events({
           if (res)//espera o future voltar
           Router.go("/pagamento/"+res);
         });
-        swal('hello World');
+
         swal({
           title: "Redirecionando para o PagSeguro",
           text: "Aguarde por favor...",
-          type: "info",
-          closeOnConfirm: false,
-          showLoaderOnConfirm: true,
+          imageUrl: "../img/bx_loader.gif",
+          imageClass: "img-resize-small",
+          // closeOnConfirm: false,
+          // showLoaderOnConfirm: true,
           allowEscapeKey: false,
           allowOutsideClick: false,
           showConfirmButton: false,
