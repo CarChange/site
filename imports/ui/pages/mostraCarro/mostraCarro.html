@@ -22,7 +22,7 @@
         </div>
       </div>
       {{#if isInRole 'admin.cm,admin.super'}}
-        {{> pagamento carros}}
+        <button alt="Pague com PagSeguro" class="pagamento pretoText">Compre aqui!</button>
       {{else}}
         {{#unless currentUser.emails.[0].verified}}
           <p class="alert alert-warning">Você precisa verificar seu email!
