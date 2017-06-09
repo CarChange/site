@@ -20,6 +20,7 @@ import '/imports/ui/pages/admhome/admhome.js';
 import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 import '/imports/ui/pages/email/email.js';
 import '/imports/ui/pages/admUserDash/admUserDash.js';
+import '/imports/ui/pages/checkout/checkout.js';
 
 permissaoUsers = RouteController.extend({
   onBeforeAction: function () {

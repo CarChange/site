@@ -74,7 +74,7 @@ Meteor.methods({
           description: String,
           amount: String,
         });
- 
+
         var myFuture = new Future();
         var pagseguro = require('pagseguro'),
         pag = new pagseguro({
@@ -130,5 +130,22 @@ Meteor.methods({
         // Pagamentos.insert(pagamento);
 
         return myFuture.wait(); //espera o retorno do xml completo
+    },
+
+    'pagamentos.insert': function(transactionId) {
+
+      check(transactionId, String);
+
+      var transactionOk = Pagamentos.findOne({'transaction':transactionId});
+      if(transactionOk != null)
+        throw new Meteor.Error("Transação já registrada!", "Um pagamento com a transaction_id '"+transactionId+"' já foi registrado.", transactionOk);
+
+      var transaction = {
+        user: this.userId,
+        transaction: transactionId,
+        date: new Date(),
+      }
+
+      Pagamentos.insert(transaction);
     }
 });
