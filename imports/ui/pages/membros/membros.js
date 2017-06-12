@@ -34,15 +34,16 @@ Template.membros.events({
         });
     },
     'click .resetPassword' (event, template) {
-        let email = Meteor.user().emails[ 0 ].address;
-        Meteor.call("resetUserPassword", email, function(error, result){
-            if(error){
-                swal( error.reason, 'Opa! Email não enviado.' );
-            }
-            if(result){
-                swal( `Link de mudança de senha enviado para ${ email }!`, 'success' );
-            }
-        });
+        // let email = Meteor.user().emails[ 0 ].address;
+        // Meteor.call("resetUserPassword", email, function(error, result){
+        //     if(error){
+        //         swal( error.reason, 'Opa! Email não enviado.' );
+        //     }
+        //     if(result){
+        //         swal( `Link de mudança de senha enviado para ${ email }!`, 'success' );
+        //     }
+        // });
+        Router.go("/membros/alterar-senha");
     },
     "click .pagamento": function(event, template){
         event.preventDefault();

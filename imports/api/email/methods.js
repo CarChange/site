@@ -13,13 +13,10 @@ Accounts.emailTemplates.enrollAccount.text = (user, url) => {
         + url;
 };
 
-// Accounts.emailTemplates.resetPassword.from = () => {
-//   // Overrides the value set in `Accounts.emailTemplates.from` when resetting
-//   // passwords.
-//   return 'CarChange - Resetar Senha <naoresponda@carchange.com.br>';
-// };
-
 Accounts.emailTemplates.resetPassword = {
+    from() {
+        return 'CarChange - Resetar Senha <naoresponda@carchange.com.br>';
+    },
     subject() {
         return "[CarChange] Resetar a senha";
     },

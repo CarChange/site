@@ -21,6 +21,7 @@ import '/imports/ui/pages/mostraCarro/mostraCarro.js';
 import '/imports/ui/pages/email/email.js';
 import '/imports/ui/pages/admUserDash/admUserDash.js';
 import '/imports/ui/pages/checkout/checkout.js';
+import '/imports/ui/pages/passwordChange/passwordChange.js';
 
 permissaoUsers = RouteController.extend({
   onBeforeAction: function () {
@@ -187,6 +188,12 @@ Router.route("/checkout", {
 
 
 Router.route("email");
+
+Router.route("changePassword", {
+  path:"/membros/alterar-senha",
+  template:"passwordChange",
+  controller: "permissaoUsers",
+});
 
 Router.route('resetPassword', {
     controller: 'AccountController',
