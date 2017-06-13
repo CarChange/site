@@ -38,9 +38,13 @@
             {{#if isInRole 'user.viewer'}}
               <p>Você ainda não pagou a mensalidade do Clube! <button alt="Pague com PagSeguro" class="pagamento pretoText">Compre aqui!</button></p>
             {{/if}}
+            <a href="{{pathFor route='changePassword'}}" class="resetPassword">Alterar senha</a>
 
-
-          <a href="{{pathFor route='changePassword'}}" class="resetPassword">Alterar senha</a>
+            {{#if isInRole 'user.vendor'}}
+            <div>
+              <input onClick="this.setSelectionRange(0, this.value.length)" value="{{linkIndicacao}}" class="pretoText" size="50" readonly/>
+            </div>
+            {{/if}}
         </div>
       </div>
 

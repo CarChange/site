@@ -16,7 +16,11 @@ Template.membros.helpers({
         valorParc : parseFloat(180).toFixed(2),//verificar valor da parcela
       }
       return produto;
-    }
+    },
+    linkIndicacao: function() {
+      let url = Meteor.absoluteUrl() + "registrar/" + Meteor.userId();
+      return url;
+    },
 });
 
 Template.membros.events({

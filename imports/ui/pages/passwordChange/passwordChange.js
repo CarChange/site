@@ -16,13 +16,13 @@ Template.passwordChange.events({
           });
         } else if(error.error == 403) {
           swal({
-            title: "Deu ruim!",
+            title: "Erro!",
             text: "Senha incorreta!",
             type: "error",
           });
         } else {
           swal({
-            title: "Deu ruim!",
+            title: "Erro!",
             text: error.message,
             type: "error",
           });
