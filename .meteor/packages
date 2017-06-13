@@ -38,8 +38,9 @@ email@1.2.1
 session@1.1.7
 dynamic-import
 jaredmartin:future
-meteorhacks:npm
 peerlibrary:xml2js
 cfs:standard-packages
 cfs:filesystem
 cleandersonlobo:sweetalert2
+meteorhacks:picker
+http

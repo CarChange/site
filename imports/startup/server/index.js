@@ -1,6 +1,10 @@
 // Import server startup through a single index entry point
 import './register-api.js';
 import './fixtures.js';
+import bodyParser from 'body-parser';
+
+//Picker.middleware( bodyParser.json() );
+Picker.middleware( bodyParser.urlencoded( { extended: false } ) );
 
 if(Meteor.isServer){
   Meteor.startup(function() {
@@ -17,10 +21,11 @@ if(Meteor.isServer){
   this.response.end();
   }, {where: 'server'});
 
-  Router.route('/pagamento/listener', { where: 'server' })
-  .post(function () {
-    console.log(this);
-    this.response.end('Caught you\n');
-    //this.response.status(200).json({text:"Todo added"});
-});
+  Picker.route('/listener', function(params, req, res, next) {
+    //console.log(req.body.notificationCode);
+    var nfCode = req.body.notificationCode;
+    Meteor.call("pagamentos.nfUpdate", nfCode);
+
+  });
+
 }

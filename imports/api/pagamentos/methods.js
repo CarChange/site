@@ -3,6 +3,11 @@ import { Pagamentos } from './pagamentos.js';
 import { check } from 'meteor/check';
 import pagseguro from 'pagseguro';
 
+//TODO colocar variaveis globais de Email e token do pagseguro
+
+var emailPag = 'consorcio.carchange@gmail.com',
+tokenPag = '3A631EB99D0E4D0CB059B9AB915079C8';
+
 Meteor.methods({
     'pagamentos.buySub': function() {
 
@@ -13,8 +18,8 @@ Meteor.methods({
         var myFuture = new Future();
         var pagseguro = require('pagseguro'),
         pag = new pagseguro({
-          email: 'consorcio.carchange@gmail.com',
-          token: '3A631EB99D0E4D0CB059B9AB915079C8',
+          email: emailPag,
+          token: tokenPag,
           mode: 'sandbox'
         });
 
@@ -40,7 +45,6 @@ Meteor.methods({
 
         //Configuranto URLs de retorno e de notificação (Opcional)
         //ver https://pagseguro.uol.com.br/v2/guia-de-integracao/finalizacao-do-pagamento.html#v2-item-redirecionando-o-comprador-para-uma-url-dinamica
-        pag.setRedirectURL("https://www.carchange.com.br");
         //pag.setNotificationURL("http://www.lojamodelo.com.br/notificacao"); aprender notificações
 
 
@@ -50,7 +54,7 @@ Meteor.methods({
                 console.log(err);
                 myFuture.throw(err);
             }
-            console.log(res);
+            //console.log(res);
             var parser = new xml2js.Parser();
             parser.parseString(res, function(err, res) {
               myFuture.return(res.checkout.code[0]);
@@ -78,8 +82,8 @@ Meteor.methods({
         var myFuture = new Future();
         var pagseguro = require('pagseguro'),
         pag = new pagseguro({
-          email: 'consorcio.carchange@gmail.com',
-          token: '3A631EB99D0E4D0CB059B9AB915079C8',
+          email: emailPag,
+          token: tokenPag,
           mode: 'sandbox'
         });
 
@@ -105,7 +109,6 @@ Meteor.methods({
 
         //Configuranto URLs de retorno e de notificação (Opcional)
         //ver https://pagseguro.uol.com.br/v2/guia-de-integracao/finalizacao-do-pagamento.html#v2-item-redirecionando-o-comprador-para-uma-url-dinamica
-        pag.setRedirectURL("https://www.carchange.com.br");
         //pag.setNotificationURL("http://www.lojamodelo.com.br/notificacao"); aprender notificações
 
 
@@ -115,7 +118,7 @@ Meteor.methods({
                 console.log(err);
                 myFuture.throw(err);
             }
-            console.log(res);
+            //console.log(res);
             var parser = new xml2js.Parser();
             parser.parseString(res, function(err, res) {
               myFuture.return(res.checkout.code[0]);
@@ -147,5 +150,24 @@ Meteor.methods({
       }
 
       Pagamentos.insert(transaction);
+    },
+
+    'pagamentos.nfUpdate': function(nfCode) {
+      HTTP.get("https://ws.pagseguro.uol.com.br/v3/transactions/notifications/"+nfCode+"?email="+emailPag+"&token="+tokenPag, function(error, result){
+        if(error){
+          console.log("error", error);
+        }
+        if(result){
+          console.log(result);
+          var parser = new xml2js.Parser();
+          parser.parseString(result, function(err, res){
+            if(err)
+              console.log(err);
+            if(res)
+              console.log(res);
+          })
+        }
+      });
+
     }
 });
