@@ -47,8 +47,8 @@ Meteor.methods({
     });
     */
   },
-  'users.remove'() {
-
+  'users.remove'(userId) {
+    return Meteor.users.remove(userId);
   },
 
   'users.changeRole'(userId,role) {

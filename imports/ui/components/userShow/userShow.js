@@ -40,5 +40,39 @@ Template.userShow.events({
       console.log('SUCESSO!');
     });
 
+  },
+  "click .remove": function(event, template) {
+    event.preventDefault();
+    let userId = this._id;
+    swal({
+      type: 'warning',
+      title: 'Remover registro',
+      text: 'Realmente deseja remover este registro?\n' +
+            `${this.emails[0].address}`,
+      showCancelButton: true,
+      cancelButtonText: "Não",
+      confirmButtonText: "Sim",
+    }).then(function() {
+      Meteor.call("users.remove", userId, function(error, result){
+        if(error){
+          console.log("error", error);
+        }
+        if(result){
+          swal({
+            type: 'success',
+            title: 'Registro removido',
+            text: 'Registro removido com suscesso!',
+          });
+        }
+      });
+      }, function(dismiss) {
+      if (dismiss == 'cancel') {
+        swal(
+          'Cancelado',
+          'O registro não foi deletado.',
+          'info'
+        );
+      }
+    });
   }
 });

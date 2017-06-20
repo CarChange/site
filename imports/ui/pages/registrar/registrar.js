@@ -66,7 +66,7 @@ Template.registrar.events({
                       swal("error", error);
                   }
                   if(result){
-                      swal("Veja seu email!", "Um link de verificação foi enviado para seu email.");
+                      swal("Veja seu email!", "Um link de verificação foi enviado para seu email.", "success");
                   }
               });
               Router.go('membros');
