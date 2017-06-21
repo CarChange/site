@@ -1,5 +1,6 @@
 import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
+import { Carros } from '/imports/api/carros/carros.js';
 
 // Import needed templates
 import '/imports/ui/layouts/index/index.js';
@@ -117,7 +118,8 @@ Router.route("/registrar/:_id", {
       Meteor.logout();
     this.next();
   }
-})
+});
+
 Router.route("/loja");
 
 Router.route("/login");
@@ -140,8 +142,6 @@ Router.route("/loja/consorcio", {
   },
 });
 
-
-
 Router.route("/admin/cadastroConsorcio", {
   name:"cadastroConsorcio",
   template:"cadastroConsorcio",
@@ -151,6 +151,17 @@ Router.route("/admin/cadastroConsorcio", {
   },
 });
 
+Router.route("/admin/cadastroConsorcio/:_id", {
+  name: "editarConsorcio",
+  template: "cadastroConsorcio",
+  controller: "permissaoAdmin",
+  waitOn: function () {
+    return Meteor.subscribe('carro', this.params._id);
+  },
+  data: function() {
+    return Carros.findOne();
+  }
+});
 
 Router.route("/pontoVirtual", {
     waitOn:function(){

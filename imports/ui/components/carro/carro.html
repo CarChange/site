@@ -5,7 +5,9 @@
     com parcela no valor de <strong>{{valorParc}} reais</strong> ({{categoria}})</a>
 </li>
 {{#if isInRole 'admin.cm,admin.super'}}
-    <button class="remove pretoText" type="submit">Remover consórcio</button>
+  <button class="remove pretoText" type="submit">Remover consórcio</button>
+  {{#unless editar}}
     <button class="editar pretoText" type="submit">Editar consórcio</button>
+  {{/unless}}
 {{/if}}
 </template>
