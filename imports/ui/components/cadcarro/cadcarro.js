@@ -4,11 +4,11 @@ Template.cadcarro.helpers({
   editar: function() {
     return Router.current().route.getName() == "editarConsorcio";
   },
-  urlValido: function() {
-    if(this._id == undefined) {
-      Router.go('cadastroConsorcio');
-    }
-  },
+  // urlValido: function() {
+  //   if(this._id == undefined) {
+  //     Router.go('cadastroConsorcio');
+  //   }
+  // },
   formName: function(edit) {
     return edit ? "form-editcarro" : "form-cadcarro";
   },

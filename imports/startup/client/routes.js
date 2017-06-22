@@ -160,6 +160,19 @@ Router.route("/admin/cadastroConsorcio/:_id", {
   },
   data: function() {
     return Carros.findOne();
+  },
+  onAfterAction: function() {
+    if(!Carros.findOne()) {
+      swal({
+        type: "warning",
+        title: "Carro indisponível",
+        text: "Verifique se você escolheu o carro certo."
+      }).then(function() {
+        //TODO Consertar isso pra ficar smooth
+        Router.go("cadastroConsorcio");
+        document.location.reload(true);
+      });
+    }
   }
 });
 
@@ -186,6 +199,24 @@ Router.route("/mostraCarro/:_id", {
   waitOn:function(){
     return Meteor.subscribe("carro", this.params._id);
   },
+  onAfterAction: function() {
+    if(!Carros.findOne()) {
+      swal({
+        type: "warning",
+        title: "Carro indisponível",
+        text: "Verifique se você escolheu o carro certo."
+      }).then(function() {
+        //TODO Consertar isso pra ficar smooth
+        if(Roles.userIsInRole(Meteor.userId(), ['admin.cm', 'admin.super']))
+          Router.go("cadastroConsorcio");
+        else if(Roles.userIsInRole(Meteor.userId(), ['user.viewer', 'user.client', 'user.vendor']))
+          Router.go("consorcio");
+        else
+          Router.go("home");
+        document.location.reload(true);
+      });
+    }
+  }
 });
 
 Router.route("/checkout", {
