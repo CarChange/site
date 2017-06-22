@@ -5,8 +5,7 @@ import { Pontos } from '../../api/pontos/pontos.js';
 
 Meteor.startup(() => {
     //cria todos os roles
-    console.log("hey 1 " + Roles.getAllRoles());
-    if(!Roles.getAllRoles()){
+    if(Roles.getAllRoles().count() == 0){
       console.log("Criando roles...OK");
       Roles.createRole('admin.super');
       Roles.createRole('admin.cm');
@@ -34,7 +33,7 @@ Meteor.startup(() => {
     };
     Accounts.createUser(admin);
     admin = Accounts.findUserByEmail("carchange@carchange.com.br");
-console.log("hey 2");
+
     Roles.addUsersToRoles(admin._id, 'admin.super');
 
     if(admin) {
