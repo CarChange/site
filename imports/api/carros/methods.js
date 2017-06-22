@@ -37,12 +37,14 @@ Meteor.methods({
         throw new Meteor.Error('Não Autorizado');
 
         check(carro,{
+          _id : String,
           marca : String,
           modelo : String,
           categoria : String,
           valorTotal : String,
           valorParc : String,
           numParc : String,
+          imagem : String,
           creator : {
             createdAt : Date,
             adminId : String,

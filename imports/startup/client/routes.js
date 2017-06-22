@@ -1,5 +1,6 @@
 import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
+import { Carros } from '/imports/api/carros/carros.js';
 
 // Import needed templates
 import '/imports/ui/layouts/index/index.js';
@@ -117,7 +118,8 @@ Router.route("/registrar/:_id", {
       Meteor.logout();
     this.next();
   }
-})
+});
+
 Router.route("/loja");
 
 Router.route("/login");
@@ -140,8 +142,6 @@ Router.route("/loja/consorcio", {
   },
 });
 
-
-
 Router.route("/admin/cadastroConsorcio", {
   name:"cadastroConsorcio",
   template:"cadastroConsorcio",
@@ -151,6 +151,30 @@ Router.route("/admin/cadastroConsorcio", {
   },
 });
 
+Router.route("/admin/cadastroConsorcio/:_id", {
+  name: "editarConsorcio",
+  template: "cadastroConsorcio",
+  controller: "permissaoAdmin",
+  waitOn: function () {
+    return Meteor.subscribe('carro', this.params._id);
+  },
+  data: function() {
+    return Carros.findOne();
+  },
+  onAfterAction: function() {
+    if(!Carros.findOne()) {
+      swal({
+        type: "warning",
+        title: "Carro indisponível",
+        text: "Verifique se você escolheu o carro certo."
+      }).then(function() {
+        //TODO Consertar isso pra ficar smooth
+        Router.go("cadastroConsorcio");
+        document.location.reload(true);
+      });
+    }
+  }
+});
 
 Router.route("/pontoVirtual", {
     waitOn:function(){
@@ -175,6 +199,24 @@ Router.route("/mostraCarro/:_id", {
   waitOn:function(){
     return Meteor.subscribe("carro", this.params._id);
   },
+  onAfterAction: function() {
+    if(!Carros.findOne()) {
+      swal({
+        type: "warning",
+        title: "Carro indisponível",
+        text: "Verifique se você escolheu o carro certo."
+      }).then(function() {
+        //TODO Consertar isso pra ficar smooth
+        if(Roles.userIsInRole(Meteor.userId(), ['admin.cm', 'admin.super']))
+          Router.go("cadastroConsorcio");
+        else if(Roles.userIsInRole(Meteor.userId(), ['user.viewer', 'user.client', 'user.vendor']))
+          Router.go("consorcio");
+        else
+          Router.go("home");
+        document.location.reload(true);
+      });
+    }
+  }
 });
 
 Router.route("/checkout", {
