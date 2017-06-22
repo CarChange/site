@@ -5,6 +5,7 @@ import { Pontos } from '../../api/pontos/pontos.js';
 
 Meteor.startup(() => {
     //cria todos os roles
+    console.log("hey 1 " + Roles.getAllRoles());
     if(!Roles.getAllRoles()){
       console.log("Criando roles...OK");
       Roles.createRole('admin.super');
@@ -17,23 +18,23 @@ Meteor.startup(() => {
 
 
 
-    if ((adm = Accounts.findUserByEmail("ad@min.com")) != undefined) {
+    if ((adm = Accounts.findUserByEmail("carchange@carchange.com.br")) != undefined) {
         Meteor.users.remove({_id: adm._id});
     }
     var admin = {
-        email: "ad@min.com",
+        email: "carchange@carchange.com.br",
         password: "gartinhos",
         profile: {
             nome: {
-                primeiro: "ad",
-                ultimo: "minho"
+                primeiro: "CarChange",
+                ultimo: "Consorcios"
             },
             dataCadastro: new Date(2017, 4, 3)    //mês varia de 0 a 11
         }
     };
     Accounts.createUser(admin);
-    admin = Accounts.findUserByEmail("ad@min.com");
-
+    admin = Accounts.findUserByEmail("carchange@carchange.com.br");
+console.log("hey 2");
     Roles.addUsersToRoles(admin._id, 'admin.super');
 
     if(admin) {
@@ -42,5 +43,4 @@ Meteor.startup(() => {
     else {
         console.log("Nao foi possivel cadastrar o admin.");
     }
-    Meteor
 });
